@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SignUpController!{% endblock %}
+
+{% block body %}
+    <div class="container mt-2">
+        {{ include('menu.html.twig') }}
+        <div class="row">
+            <div class="col text-center">
+                <h1>Регистрация на English Book!</h1>
+            </div>
+        </div>
+        {{ form_start(signUpForm) }}
+        {{ form_widget(signUpForm) }}
+        <button type="submit" class="btn btn-primary" >Зарегистрироваться</button>
+        {{ form_end(signUpForm) }}
+    </div>
+{% endblock %}
