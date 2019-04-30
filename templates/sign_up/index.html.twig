@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SignUpController!{% endblock %}
+{% block title %}SignUp{% endblock %}
 
 {% block body %}
     <div class="container mt-2">
@@ -16,7 +16,7 @@
                 {{ form_row(signUpForm.email) }}
                 {{ form_row(signUpForm.plainPassword) }}
                 {{ form_row(signUpForm.agreeTerms) }}
-                <button type="submit" class="btn btn-primary" >Зарегистрироваться</button>
+                <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
                 {{ form_end(signUpForm) }}
             </div>
         </div>

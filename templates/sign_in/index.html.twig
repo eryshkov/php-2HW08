@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SignIn{% endblock %}
+
+{% block body %}
+    <div class="container mt-2">
+        {{ include('menu.html.twig') }}
+        <div class="row">
+            <div class="col text-center">
+                <h1>Вход на English Book!</h1>
+            </div>
+        </div>
+        {#<div class="row justify-content-center">#}
+            {#<div class="col-4">#}
+                {#{{ form_start(signInForm) }}#}
+                {#{{ form_row(signInForm.email) }}#}
+                {#{{ form_row(signInForm.plainPassword) }}#}
+                {#{{ form_row(signInForm.agreeTerms) }}#}
+                {#<button type="submit" class="btn btn-primary">Войти</button>#}
+                {#{{ form_end(signInForm) }}#}
+            {#</div>#}
+        {#</div>#}
+    </div>
+{% endblock %}
