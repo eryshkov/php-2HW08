@@ -10,9 +10,13 @@
                 <h1>Регистрация на English Book!</h1>
             </div>
         </div>
-        {{ form_start(signUpForm) }}
-        {{ form_widget(signUpForm) }}
-        <button type="submit" class="btn btn-primary" >Зарегистрироваться</button>
-        {{ form_end(signUpForm) }}
+        <div class="row justify-content-center">
+            <div class="col-4">
+                {{ form_start(signUpForm) }}
+                {{ form_widget(signUpForm) }}
+                <button type="submit" class="btn btn-primary" >Зарегистрироваться</button>
+                {{ form_end(signUpForm) }}
+            </div>
+        </div>
     </div>
 {% endblock %}
