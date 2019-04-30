@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
+use App\Validator\UniqueUser;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class UserRegistrationFormModel
@@ -10,6 +10,7 @@ class UserRegistrationFormModel
     /**
      * @Assert\NotBlank(message="Введите свой email")
      * @Assert\Email(message="Неверный email")
+     * @UniqueUser(message="Пользователь {{ email }} уже существует")
      */
     public $email;
     /**

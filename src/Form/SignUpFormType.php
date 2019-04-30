@@ -15,9 +15,24 @@ class SignUpFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class)
-            ->add('plainPassword', PasswordType::class)
-            ->add('agreeTerms', CheckboxType::class)
+            ->add('email', EmailType::class, [
+                'attr' => [
+                    'placeholder' => 'email',
+                ],
+                'label' => false,
+                'required' => true,
+            ])
+            ->add('plainPassword', PasswordType::class,[
+                'attr' => [
+                    'placeholder' => 'пароль',
+                ],
+                'label' => false,
+                'required' => true,
+            ])
+            ->add('agreeTerms', CheckboxType::class, [
+                'required' => true,
+                'label' => 'Соглашаюсь с условиями',
+            ])
         ;
     }
 
