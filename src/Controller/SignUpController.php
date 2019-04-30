@@ -30,7 +30,8 @@ class SignUpController extends AbstractController
                 $passwordEncoder->encodePassword($user, $userModel->plainPassword)
             );
             $user->setRegDate(\DateTime());
-    
+            
+            return $this->redirectToRoute('home_page');
         }
         
         return $this->render('sign_up/index.html.twig', [
