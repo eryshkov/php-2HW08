@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class SignUpController extends AbstractController
 {
     /**
-     * @Route("/signup", name="sign_up")
+     * @Route("/signup", name="app_sign_up")
      */
     public function index(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -31,7 +31,7 @@ class SignUpController extends AbstractController
             );
             $user->setRegDate(\DateTime());
             
-            return $this->redirectToRoute('home_page');
+            return $this->redirectToRoute('app_index');
         }
         
         return $this->render('sign_up/index.html.twig', [
