@@ -29,15 +29,13 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     
     private $entityManager;
     private $urlGenerator;
-    private $csrfTokenManager;
     private $passwordEncoder;
     private $formFactory;
     
-    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder, FormFactoryInterface $formFactory)
+    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, UserPasswordEncoderInterface $passwordEncoder, FormFactoryInterface $formFactory)
     {
         $this->entityManager = $entityManager;
         $this->urlGenerator = $urlGenerator;
-        $this->csrfTokenManager = $csrfTokenManager;
         $this->passwordEncoder = $passwordEncoder;
         $this->formFactory = $formFactory;
     }
@@ -62,9 +60,10 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
                     $userModel->email
                 );
             }
+            return $userModel;
         }
-        
-        return $userModel ?? null;
+    
+        throw new CustomUserMessageAuthenticationException('Пользователь не найден');
     }
     
     public function getUser($credentials, UserProviderInterface $userProvider)
@@ -74,7 +73,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         
         if (!isset($user)) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Пользователь ' . $user->getEmail() . ' не найден');
+            throw new CustomUserMessageAuthenticationException('Пользователь не найден');
         }
         
         return $user;

@@ -12,6 +12,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-4">
+                {{ form_errors(signInForm) }}
                 {{ form_start(signInForm) }}
                 {{ form_row(signInForm.email) }}
                 {{ form_row(signInForm.plainPassword) }}

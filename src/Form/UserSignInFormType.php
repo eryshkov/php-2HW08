@@ -15,9 +15,15 @@ class UserSignInFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class)
-            ->add('plainPassword', PasswordType::class)
-            ->add('rememberMe', CheckboxType::class)
+            ->add('email', EmailType::class, [
+                'required' => true,
+            ])
+            ->add('plainPassword', PasswordType::class, [
+                'required' => true,
+            ])
+            ->add('rememberMe', CheckboxType::class, [
+                'required' => false,
+            ])
         ;
     }
 

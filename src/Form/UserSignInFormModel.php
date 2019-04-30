@@ -13,7 +13,6 @@ class UserSignInFormModel
     public $email;
     /**
      * @Assert\NotBlank(message="Введите свой пароль")
-     * @Assert\Length(min="6", minMessage="Пароль должен быть не короче 6 символов")
      */
     public $plainPassword;
     /**
