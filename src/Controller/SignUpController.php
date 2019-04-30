@@ -29,6 +29,8 @@ class SignUpController extends AbstractController
             $user->setPassword(
                 $passwordEncoder->encodePassword($user, $userModel->plainPassword)
             );
+            $user->setRegDate(\DateTime());
+    
         }
         
         return $this->render('sign_up/index.html.twig', [
