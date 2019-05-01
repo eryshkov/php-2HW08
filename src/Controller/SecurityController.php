@@ -27,7 +27,11 @@ class SecurityController extends AbstractController
             $userModel->email = $lastUsername;
         }
         
-        $form = $this->createForm(UserSignInFormType::class, $userModel);
+        $form = $this->createForm(UserSignInFormType::class, $userModel, [
+            'attr' => [
+                'novalidate' => null,
+            ],
+        ]);
     
         return $this->render('security/login.html.twig', [
             'signInForm' => $form->createView(),

@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Form\UserSignInFormModel;
 use App\Form\UserSignInFormType;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,13 +28,15 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     private $urlGenerator;
     private $passwordEncoder;
     private $formFactory;
+    private $containerBag;
     
-    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, UserPasswordEncoderInterface $passwordEncoder, FormFactoryInterface $formFactory)
+    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, UserPasswordEncoderInterface $passwordEncoder, FormFactoryInterface $formFactory, ContainerBagInterface $containerBag)
     {
         $this->entityManager = $entityManager;
         $this->urlGenerator = $urlGenerator;
         $this->passwordEncoder = $passwordEncoder;
         $this->formFactory = $formFactory;
+        $this->containerBag = $containerBag;
     }
     
     public function supports(Request $request)
@@ -58,8 +61,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             }
             return $userModel;
         }
-    
-        throw new CustomUserMessageAuthenticationException('Form is not valid');
+        throw new CustomUserMessageAuthenticationException('Неверный логин/пароль');
     }
     
     public function getUser($credentials, UserProviderInterface $userProvider)
@@ -69,7 +71,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         
         if (!isset($user)) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('User not found');
+            throw new CustomUserMessageAuthenticationException('Пользователь не существует');
         }
         
         return $user;
@@ -83,7 +85,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         if ($isPasswordValid) {
             return $isPasswordValid;
         } else {
-            throw new CustomUserMessageAuthenticationException('Wrong password');
+            throw new CustomUserMessageAuthenticationException('Неверный пароль');
         }
     }
     
