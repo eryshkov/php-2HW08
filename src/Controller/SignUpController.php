@@ -5,11 +5,16 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\SignUpFormType;
 use App\Form\UserRegistrationFormModel;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
+/**
+ * Class SignUpController
+ * @IsGranted("not has_role('ROLE_USER')")
+ */
 class SignUpController extends AbstractController
 {
     /**
