@@ -21,17 +21,17 @@ class SecurityController extends AbstractController
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
-    
+        
         $userModel = new UserSignInFormModel();
         if (isset($lastUsername)) {
             $userModel->email = $lastUsername;
         }
         
         $form = $this->createForm(UserSignInFormType::class, $userModel);
-
+    
         return $this->render('security/login.html.twig', [
             'signInForm' => $form->createView(),
-            
+            'authError' => $error,
         ]);
     }
     
