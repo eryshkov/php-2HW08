@@ -16,13 +16,22 @@ class UserSignInFormType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
+                'attr' => [
+                    'placeholder' => 'email',
+                ],
+                'label' => false,
                 'required' => true,
             ])
             ->add('plainPassword', PasswordType::class, [
+                'attr' => [
+                    'placeholder' => 'пароль',
+                ],
+                'label' => false,
                 'required' => true,
             ])
             ->add('rememberMe', CheckboxType::class, [
                 'required' => false,
+                'label' => 'Запомнить меня',
             ])
         ;
     }
