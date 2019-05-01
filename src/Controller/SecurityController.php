@@ -26,7 +26,6 @@ class SecurityController extends AbstractController
         if (isset($lastUsername)) {
             $userModel->email = $lastUsername;
         }
-        
         $form = $this->createForm(UserSignInFormType::class, $userModel, [
             'attr' => [
                 'novalidate' => null,

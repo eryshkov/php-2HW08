@@ -49,7 +49,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     {
         $form = $this->formFactory->create(UserSignInFormType::class);
         $form->handleRequest($request);
-        
+    
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UserSignInFormModel $userModel */
             $userModel = $form->getData();
@@ -61,6 +61,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             }
             return $userModel;
         }
+        
         throw new CustomUserMessageAuthenticationException('Неверный логин/пароль');
     }
     
