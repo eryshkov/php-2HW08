@@ -8,6 +8,7 @@ class ListCreationFormModel
 {
     /**
      * @Assert\NotBlank(message="Имя не может быть пустым")
+     * @var string
      */
     public $name;
 }
