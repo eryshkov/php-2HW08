@@ -29,7 +29,7 @@ class WordList
     private $lastAccessDate;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Word", mappedBy="list")
+     * @ORM\OneToMany(targetEntity="App\Entity\Word", mappedBy="list", fetch="EXTRA_LAZY")
      */
     private $words;
 
