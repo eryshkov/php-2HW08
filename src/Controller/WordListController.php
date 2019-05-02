@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class WordListController
  * @IsGranted("ROLE_USER")
  */
-class WordListController extends AbstractController
+class WordListController extends BaseController
 {
     /**
      * @var WordListRepository
