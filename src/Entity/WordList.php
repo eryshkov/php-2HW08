@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,6 +27,16 @@ class WordList
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $lastAccessDate;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Word", mappedBy="list")
+     */
+    private $words;
+
+    public function __construct()
+    {
+        $this->words = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -51,6 +63,37 @@ class WordList
     public function setLastAccessDate(?\DateTimeInterface $lastAccessDate): self
     {
         $this->lastAccessDate = $lastAccessDate;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Word[]
+     */
+    public function getWords(): Collection
+    {
+        return $this->words;
+    }
+
+    public function addWord(Word $word): self
+    {
+        if (!$this->words->contains($word)) {
+            $this->words[] = $word;
+            $word->setList($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWord(Word $word): self
+    {
+        if ($this->words->contains($word)) {
+            $this->words->removeElement($word);
+            // set the owning side to null (unless already changed)
+            if ($word->getList() === $this) {
+                $word->setList(null);
+            }
+        }
 
         return $this;
     }
