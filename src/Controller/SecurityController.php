@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Form\UserSignInFormModel;
 use App\Form\UserSignInFormType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
