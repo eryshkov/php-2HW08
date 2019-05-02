@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Word List{% endblock %}
+
+{% block body %}
+        <div class="row">
+            <div class="col text-center">
+                <h1>Ваши списки слов</h1>
+            </div>
+        </div>
+         <div class="row">
+             <div class="col">
+                 {% for item in wordList %}
+                    <li>{{ item.name }}</li>
+                 {% else %}
+                     <p class="text-center">Список пуст</p>
+                 {% endfor %}
+             </div>
+         </div>
+{% endblock %}

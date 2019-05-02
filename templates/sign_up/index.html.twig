@@ -3,22 +3,19 @@
 {% block title %}SignUp{% endblock %}
 
 {% block body %}
-    <div class="container mt-2">
-        {{ include('menu.html.twig') }}
-        <div class="row">
-            <div class="col text-center">
-                <h1>Регистрация на English Book!</h1>
-            </div>
+    <div class="row">
+        <div class="col text-center">
+            <h1>Регистрация на English Book!</h1>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-4">
-                {{ form_start(signUpForm) }}
-                {{ form_row(signUpForm.email) }}
-                {{ form_row(signUpForm.plainPassword) }}
-                {{ form_row(signUpForm.agreeTerms) }}
-                <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
-                {{ form_end(signUpForm) }}
-            </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-4">
+            {{ form_start(signUpForm) }}
+            {{ form_row(signUpForm.email) }}
+            {{ form_row(signUpForm.plainPassword) }}
+            {{ form_row(signUpForm.agreeTerms) }}
+            <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+            {{ form_end(signUpForm) }}
         </div>
     </div>
 {% endblock %}
