@@ -1,13 +1,26 @@
 <div class="row justify-content-end">
-    {% if not is_granted('ROLE_USER') %}
-    <div class="col-auto">
-        <a class="btn btn-outline-primary" href="{{ path('app_login') }}">Вход</a>
-    </div>
-    <div class="col-auto">
-        <a class="btn btn-outline-info" href="{{ path('app_sign_up') }}">Регистрация</a>
-    </div>
+    {% if user is defined and user %}
+        <div class="col-auto">
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ user.email }}
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="#">Настройки</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ path('app_logout') }}">Выход</a>
+                </div>
+            </div>
+        </div>
     {% endif %}
-    {% if is_granted('ROLE_USER') %}
-        <a class="btn btn-outline-primary" href="{{ path('app_logout') }}">Выход</a>
+    {% if not is_granted('ROLE_USER') %}
+        <div class="col-auto">
+            <a class="btn btn-outline-primary" href="{{ path('app_login') }}">Вход</a>
+        </div>
+        <div class="col-auto">
+            <a class="btn btn-outline-info" href="{{ path('app_sign_up') }}">Регистрация</a>
+        </div>
     {% endif %}
 </div>

@@ -2,10 +2,9 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomePageController extends AbstractController
+class HomePageController extends BaseController
 {
     /**
      * @Route("/", name="app_index")
@@ -14,6 +13,7 @@ class HomePageController extends AbstractController
     {
         return $this->render('home_page/index.html.twig', [
             'controller_name' => 'HomePageController',
+            'user' => $this->getUser(),
         ]);
     }
 }
