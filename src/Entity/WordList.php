@@ -33,6 +33,12 @@ class WordList
      */
     private $words;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="wordLists")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     public function __construct()
     {
         $this->words = new ArrayCollection();
@@ -94,6 +100,18 @@ class WordList
                 $word->setList(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

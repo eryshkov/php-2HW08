@@ -60,9 +60,15 @@ class User implements UserInterface
      */
     private $words;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\WordList", mappedBy="user")
+     */
+    private $wordLists;
+
     public function __construct()
     {
         $this->words = new ArrayCollection();
+        $this->wordLists = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -216,6 +222,37 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($word->getUser() === $this) {
                 $word->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|WordList[]
+     */
+    public function getWordLists(): Collection
+    {
+        return $this->wordLists;
+    }
+
+    public function addWordList(WordList $wordList): self
+    {
+        if (!$this->wordLists->contains($wordList)) {
+            $this->wordLists[] = $wordList;
+            $wordList->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWordList(WordList $wordList): self
+    {
+        if ($this->wordLists->contains($wordList)) {
+            $this->wordLists->removeElement($wordList);
+            // set the owning side to null (unless already changed)
+            if ($wordList->getUser() === $this) {
+                $wordList->setUser(null);
             }
         }
 
