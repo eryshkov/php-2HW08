@@ -2,12 +2,13 @@
 
 namespace App\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Word;
 use App\Form\WordFormModel;
 use App\Form\WordFormType;
 use App\Repository\WordListRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -17,10 +18,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class WordCreateController extends BaseController
 {
     /**
-     * @var Request
-     */
-    private $request;
-    /**
      * @var EntityManagerInterface
      */
     private $entityManager;
@@ -29,22 +26,21 @@ class WordCreateController extends BaseController
      */
     private $wordListRepository;
     
-    public function __construct(Request $request, EntityManagerInterface $entityManager, WordListRepository $wordListRepository)
+    public function __construct(EntityManagerInterface $entityManager, WordListRepository $wordListRepository)
     {
-        $this->request = $request;
         $this->entityManager = $entityManager;
         $this->wordListRepository = $wordListRepository;
     }
     
     /**
-     * @Route("/word/create/{listId}", name="word_create")
+     * @Route("/word/create/{listId}", name="app_word_create")
      */
-    public function index(int $listId)
+    public function index(int $listId, Request $request)
     {
         $currentUser = $this->getUser();
     
         $form = $this->createForm(WordFormType::class);
-        $form->handleRequest($this->request);
+        $form->handleRequest($request);
         $list = $this->wordListRepository->findOneBy([
             'user' => $currentUser,
             'id'   => $listId,
@@ -58,6 +54,9 @@ class WordCreateController extends BaseController
             $word->setEnglish($wordModel->english);
             $word->setRussian($wordModel->russian);
             $word->setList($list);
+    
+            $this->entityManager->persist($word);
+            $this->entityManager->flush();
         }
         
         return $this->render('word_create/index.html.twig', [
