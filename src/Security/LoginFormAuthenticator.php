@@ -49,16 +49,16 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     {
         $form = $this->formFactory->create(UserSignInFormType::class);
         $form->handleRequest($request);
-    
+        
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UserSignInFormModel $userModel */
             $userModel = $form->getData();
-            if ($userModel->rememberMe) {
-                $request->getSession()->set(
-                    Security::LAST_USERNAME,
-                    $userModel->email
-                );
-            }
+            
+            $request->getSession()->set(
+                Security::LAST_USERNAME,
+                $userModel->email
+            );
+            
             return $userModel;
         }
         
@@ -95,8 +95,8 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
         }
-    
-        return new RedirectResponse($this->urlGenerator->generate('app_index'));
+        
+        return new RedirectResponse($this->urlGenerator->generate('app_word_list'));
     }
     
     protected function getLoginUrl()

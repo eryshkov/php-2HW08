@@ -15,8 +15,4 @@ class UserSignInFormModel
      * @Assert\NotBlank(message="Введите свой пароль")
      */
     public $plainPassword;
-    /**
-     * @var bool
-     */
-    public $rememberMe;
 }

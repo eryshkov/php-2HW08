@@ -20,7 +20,9 @@
             {{ form_start(signInForm) }}
             {{ form_row(signInForm.email) }}
             {{ form_row(signInForm.plainPassword) }}
-            {{ form_row(signInForm.rememberMe) }}
+            <div class="checkbox mb-3">
+                <label><input type="checkbox" name="_remember_me"> Запомнить меня</label>
+            </div>
             <button type="submit" class="btn btn-primary">Войти</button>
             {{ form_end(signInForm) }}
         </div>

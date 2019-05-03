@@ -29,10 +29,6 @@ class UserSignInFormType extends AbstractType
                 'label' => false,
                 'required' => true,
             ])
-            ->add('rememberMe', CheckboxType::class, [
-                'required' => false,
-                'label' => 'Запомнить меня',
-            ])
         ;
     }
 
