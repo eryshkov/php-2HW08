@@ -37,12 +37,10 @@ class WordCreateController extends BaseController
      */
     public function index(int $listId, Request $request)
     {
-        $currentUser = $this->getUser();
-    
         $form = $this->createForm(WordFormType::class);
         $form->handleRequest($request);
         $list = $this->wordListRepository->findOneBy([
-            'user' => $currentUser,
+            'user' => $this->getUser(),
             'id'   => $listId,
         ]);
     
@@ -50,7 +48,7 @@ class WordCreateController extends BaseController
             /** @var WordFormModel $wordModel */
             $wordModel = $form->getData();
             $word = new Word();
-            $word->setUser($currentUser);
+            $word->setUser($this->getUser());
             $word->setEnglish($wordModel->english);
             $word->setRussian($wordModel->russian);
             $word->setList($list);
@@ -60,7 +58,6 @@ class WordCreateController extends BaseController
         }
         
         return $this->render('word_create/index.html.twig', [
-            'user' => $currentUser,
             'wordCreationForm' => $form->createView(),
             'listIsNotExists' => !isset($list),
             'listId' => $listId,

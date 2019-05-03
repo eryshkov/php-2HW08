@@ -12,7 +12,6 @@ class HomePageController extends BaseController
     public function index()
     {
         return $this->render('home_page/index.html.twig', [
-            'user' => $this->getUser(),
         ]);
     }
 }

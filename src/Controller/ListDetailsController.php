@@ -29,10 +29,8 @@ class ListDetailsController extends BaseController
      */
     public function index(int $id, Request $request)
     {
-        $currentUser = $this->getUser();
-    
         $list = $this->wordListRepository->findOneBy([
-            'user' => $currentUser,
+            'user' => $this->getUser(),
             'id' => $id,
         ]);
     
@@ -44,7 +42,6 @@ class ListDetailsController extends BaseController
         }
         
         return $this->render('list_details/index.html.twig', [
-            'user' => $currentUser,
             'list' => $list,
             'listDetailsForm' => $form->createView(),
         ]);

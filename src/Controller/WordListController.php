@@ -28,15 +28,12 @@ class WordListController extends BaseController
      */
     public function index(): Response
     {
-        $currentUser = $this->getUser();
-    
         $wordList = $this->wordListRepository->findBy([
-            'user' => $currentUser,
+            'user' => $this->getUser(),
         ]);
         
         return $this->render('word_list/index.html.twig', [
             'wordList' => $wordList,
-            'user' => $currentUser,
         ]);
     }
 }

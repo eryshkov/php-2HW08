@@ -21,8 +21,6 @@ class WordListCreateController extends BaseController
      */
     public function index(Request $request, EntityManagerInterface $entityManager)
     {
-        $currentUser = $this->getUser();
-    
         $form = $this->createForm(ListCreationFormType::class);
     
         $form->handleRequest($request);
@@ -32,7 +30,7 @@ class WordListCreateController extends BaseController
             $listModel = $form->getData();
             $list = new WordList();
             $list->setName(ucfirst($listModel->name));
-            $list->setUser($currentUser);
+            $list->setUser($this->getUser());
             $list->setLastAccessDate(new \DateTime());
     
             $entityManager->persist($list);
@@ -42,7 +40,6 @@ class WordListCreateController extends BaseController
         }
         
         return $this->render('word_list_create/index.html.twig', [
-            'user' => $currentUser,
             'listCreateForm' => $form->createView(),
         ]);
     }

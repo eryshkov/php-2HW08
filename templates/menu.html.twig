@@ -1,10 +1,10 @@
 <div class="row justify-content-end">
-    {% if user is defined and user %}
+    {% if app.user %}
         <div class="col-auto">
             <div class="dropdown">
                 <a class="btn btn-outline-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{ user.email }}
+                    {{ app.user.email }}
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
