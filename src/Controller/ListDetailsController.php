@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Form\ListDetailsFormType;
 use App\Repository\WordListRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -25,7 +27,7 @@ class ListDetailsController extends BaseController
     /**
      * @Route("/list/{id}/details", name="app_list_details")
      */
-    public function index(int $id)
+    public function index(int $id, Request $request)
     {
         $currentUser = $this->getUser();
     
@@ -33,10 +35,18 @@ class ListDetailsController extends BaseController
             'user' => $currentUser,
             'id' => $id,
         ]);
+    
+        $form = $this->createForm(ListDetailsFormType::class);
+        $form->handleRequest($request);
+    
+        if ($form->isSubmitted() && $form->isValid()) {
+            $userChoice = $form->getData();
+        }
         
         return $this->render('list_details/index.html.twig', [
             'user' => $currentUser,
             'list' => $list,
+            'listDetailsForm' => $form->createView(),
         ]);
     }
 }

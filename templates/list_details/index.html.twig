@@ -3,14 +3,30 @@
 {% block title %}List {{ list.name }}{% endblock %}
 
 {% block body %}
-<div class="row">
-    <div class="col">
-        <h3>{{ list.name }}</h3>
+    <div class="row">
+        <div class="col">
+            <h3>{{ list.name }}</h3>
+        </div>
     </div>
-</div>
     <div class="row mt-2">
         <div class="col">
-            <a href="{{ path('app_word_create', {'listId': list.id}) }}" class="btn btn-outline-primary">Добавить слово</a>
+            <a href="{{ path('app_word_create', {'listId': list.id}) }}" class="btn btn-outline-primary">Добавить
+                слово</a>
+        </div>
+    </div>
+    <div class="row justify-content-start mt-4">
+        <div class="col-4">
+            <div class="card">
+                <h5 class="card-header">Тренировка</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Условия</h5>
+                    {{ form_start(listDetailsForm) }}
+                    {{ form_row(listDetailsForm.isShowTranslation) }}
+                    {{ form_row(listDetailsForm.isRandom) }}
+                    <button type="submit" class="btn btn-primary">Начать</button>
+                    {{ form_end(listDetailsForm) }}
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
