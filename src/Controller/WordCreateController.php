@@ -62,7 +62,7 @@ class WordCreateController extends BaseController
         return $this->render('word_create/index.html.twig', [
             'user' => $currentUser,
             'wordCreationForm' => $form->createView(),
-            'isListExists' => isset($list),
+            'listIsNotExists' => !isset($list),
         ]);
     }
 }
