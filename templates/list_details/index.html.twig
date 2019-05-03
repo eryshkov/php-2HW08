@@ -8,4 +8,9 @@
         <h3>{{ list.name }}</h3>
     </div>
 </div>
+    <div class="row mt-2">
+        <div class="col">
+            <a href="{{ path('app_word_create', {'listId': list.id}) }}" class="btn btn-outline-primary">Добавить слово</a>
+        </div>
+    </div>
 {% endblock %}
