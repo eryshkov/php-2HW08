@@ -25,11 +25,7 @@ class SecurityController extends BaseController
         if (isset($lastUsername)) {
             $userModel->email = $lastUsername;
         }
-        $form = $this->createForm(UserSignInFormType::class, $userModel, [
-            'attr' => [
-                'novalidate' => null,
-            ],
-        ]);
+        $form = $this->createForm(UserSignInFormType::class, $userModel);
     
         return $this->render('security/login.html.twig', [
             'signInForm' => $form->createView(),
