@@ -21,6 +21,11 @@
             {{ form_row(wordCreationForm.english) }}
             {{ form_row(wordCreationForm.russian) }}
             <button type="submit" class="btn btn-primary"{% if listIsNotExists %} disabled{% endif %}>Создать</button>
+            {% if listIsNotExists %}
+                <a href="{{ path('app_word_list') }}" class="btn btn-secondary">Отмена</a>
+            {% else %}
+                <a href="{{ path('app_list_details', {'id': listId}) }}" class="btn btn-secondary">Отмена</a>
+            {% endif %}
             {{ form_end(wordCreationForm) }}
         </div>
     </div>

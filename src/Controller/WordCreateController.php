@@ -63,6 +63,7 @@ class WordCreateController extends BaseController
             'user' => $currentUser,
             'wordCreationForm' => $form->createView(),
             'listIsNotExists' => !isset($list),
+            'listId' => $listId,
         ]);
     }
 }
