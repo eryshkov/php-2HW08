@@ -18,7 +18,23 @@ class WordRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Word::class);
     }
-
+    
+    public function isExistAtList(Word $word): bool
+    {
+        $isExist = $this->createQueryBuilder('word')
+            ->andWhere('word.english = :engVal')
+            ->setParameter('engVal', $word->getEnglish())
+            ->andWhere('word.user = :user')
+            ->setParameter('user', $word->getUser())
+            ->andWhere('word.list = :list')
+            ->setParameter('list', $word->getList())
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    
+        return isset($isExist);
+    }
+    
     // /**
     //  * @return Word[] Returns an array of Word objects
     //  */
@@ -35,7 +51,7 @@ class WordRepository extends ServiceEntityRepository
         ;
     }
     */
-
+    
     /*
     public function findOneBySomeField($value): ?Word
     {

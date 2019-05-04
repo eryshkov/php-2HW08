@@ -25,3 +25,21 @@
         </div>
     {% endif %}
 </div>
+{% for message in app.flashes('success') %}
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        </div>
+    </div>
+{% endfor %}
+{% for message in app.flashes('error') %}
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <div class="alert alert-danger" role="alert">
+                {{ message }}
+            </div>
+        </div>
+    </div>
+{% endfor %}

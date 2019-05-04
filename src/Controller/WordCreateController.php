@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\WordRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Word;
@@ -25,11 +26,16 @@ class WordCreateController extends BaseController
      * @var WordListRepository
      */
     private $wordListRepository;
+    /**
+     * @var WordRepository
+     */
+    private $wordRepository;
     
-    public function __construct(EntityManagerInterface $entityManager, WordListRepository $wordListRepository)
+    public function __construct(EntityManagerInterface $entityManager, WordListRepository $wordListRepository, WordRepository $wordRepository)
     {
         $this->entityManager = $entityManager;
         $this->wordListRepository = $wordListRepository;
+        $this->wordRepository = $wordRepository;
     }
     
     /**
@@ -53,8 +59,15 @@ class WordCreateController extends BaseController
             $word->setRussian($wordModel->russian);
             $word->setList($list);
     
-            $this->entityManager->persist($word);
-            $this->entityManager->flush();
+            if (!$this->wordRepository->isExistAtList($word)) {
+                $this->entityManager->persist($word);
+                $this->entityManager->flush();
+                $this->addFlash('success', $word->getEnglish() . ' успешно создано');
+            } else {
+                $this->addFlash('error', $word->getEnglish() . ' уже есть в этом списке');
+            }
+    
+            $form = $this->createForm(WordFormType::class);
         }
         
         return $this->render('word_create/index.html.twig', [
