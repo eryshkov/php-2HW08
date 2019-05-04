@@ -14,10 +14,10 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class WordListCreateController
  * @IsGranted("ROLE_USER")
  */
-class WordListCreateController extends BaseController
+class ListCreateController extends BaseController
 {
     /**
-     * @Route("/word/list/create", name="app_lists_create")
+     * @Route("/list/create", name="app_list_create")
      */
     public function index(Request $request, EntityManagerInterface $entityManager)
     {
