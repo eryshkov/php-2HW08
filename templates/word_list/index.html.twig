@@ -20,8 +20,8 @@
                     {% for item in wordList %}
                         <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
                             <a href="{{ path('app_list_details', {'id': item.id}) }}" class="btn-link">{{ item.name }}</a>
-                            <span class="badge badge-primary badge-pill ml-3">{{ item.words|length }}</span>
-                            <span class="badge badge-primary badge-pill ml-3">{{ item.lastAccessDate|date('d.m.Y') }}</span>
+                            <span class="badge badge-success badge-pill ml-3">{{ item.words|length }}</span>
+                            <span class="badge badge-info badge-pill ml-3">{{ item.lastAccessDate|date('d.m.Y') }}</span>
                         </li>
                     {% endfor %}
                 </ul>

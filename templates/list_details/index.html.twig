@@ -8,6 +8,16 @@
             <h3>{{ list.name }}</h3>
         </div>
     </div>
+    <div class="row">
+        <div class="col">
+            <p>Всего слов:<span class="badge badge-success ml-2">{{ list.words|length }}</span></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>Дата последней тренировки:<span class="badge badge-info ml-2">{{ list.lastAccessDate|date('d.m.Y') }}</span></p>
+        </div>
+    </div>
     <div class="row mt-2">
         <div class="col">
             <a href="{{ path('app_word_create', {'listId': list.id}) }}" class="btn btn-outline-primary">Добавить
