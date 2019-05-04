@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Word;
+use App\Entity\WordList;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -33,6 +34,29 @@ class WordRepository extends ServiceEntityRepository
         ;
     
         return isset($isExist);
+    }
+    
+    /**
+     * @param WordList $list
+     * @return Word[]|null
+     */
+    public function getAllFromList(WordList $list): ?array
+    {
+        if (!isset($list)) {
+            return null;
+        }
+        
+        $words = $this->createQueryBuilder('word')
+            ->andWhere('word.user = :user')
+            ->setParameter('user', $list->getUser())
+            ->andWhere('word.list = :list')
+            ->setParameter('list', $list)
+            ->orderBy('word.english')
+            ->getQuery()
+            ->getArrayResult()
+        ;
+        
+        return $words;
     }
     
     // /**

@@ -34,6 +34,10 @@ class ListDetailsController extends BaseController
             'id' => $id,
         ]);
     
+        if (!isset($list)) {
+            return $this->redirectToRoute('app_lists');
+        }
+    
         $form = $this->createForm(ListDetailsFormType::class);
         $form->handleRequest($request);
     

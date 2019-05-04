@@ -10,7 +10,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <p>Всего слов:<span class="badge badge-success ml-2">{{ list.words|length }}</span></p>
+            <p>Всего слов:<a class="badge badge-success ml-2" href="{{ path('app_words_list', {'id': list.id}) }}">{{ list.words|length }}</a></p>
         </div>
     </div>
     <div class="row">

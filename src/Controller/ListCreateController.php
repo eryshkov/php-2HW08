@@ -39,7 +39,7 @@ class ListCreateController extends BaseController
             return $this->redirectToRoute('app_lists');
         }
         
-        return $this->render('word_list_create/index.html.twig', [
+        return $this->render('list_create/index.html.twig', [
             'listCreateForm' => $form->createView(),
         ]);
     }

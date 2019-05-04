@@ -32,7 +32,7 @@ class ListController extends BaseController
             'user' => $this->getUser(),
         ]);
         
-        return $this->render('word_list/index.html.twig', [
+        return $this->render('list/index.html.twig', [
             'wordList' => $wordList,
         ]);
     }
