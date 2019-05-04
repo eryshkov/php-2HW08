@@ -8,10 +8,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class WordListController
+ * Class ListController
  * @IsGranted("ROLE_USER")
  */
-class WordListController extends BaseController
+class ListController extends BaseController
 {
     /**
      * @var WordListRepository
@@ -24,7 +24,7 @@ class WordListController extends BaseController
     }
     
     /**
-     * @Route("/word/list", name="app_word_list")
+     * @Route("/lists", name="app_lists")
      */
     public function index(): Response
     {

@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class WordListCreateController extends BaseController
 {
     /**
-     * @Route("/word/list/create", name="app_word_list_create")
+     * @Route("/word/list/create", name="app_lists_create")
      */
     public function index(Request $request, EntityManagerInterface $entityManager)
     {
@@ -36,7 +36,7 @@ class WordListCreateController extends BaseController
             $entityManager->persist($list);
             $entityManager->flush();
     
-            return $this->redirectToRoute('app_word_list');
+            return $this->redirectToRoute('app_lists');
         }
         
         return $this->render('word_list_create/index.html.twig', [
