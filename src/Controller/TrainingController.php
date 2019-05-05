@@ -22,14 +22,14 @@ class TrainingController extends AbstractController
         $form = $this->createForm(ListDetailsFormType::class);
         $form->handleRequest($request);
     
-        if ($form->isSubmitted() && $form->isValid()) {
-            $userChoice = $form->getData();
-    
-            dd($userChoice);
+        if (!($form->isSubmitted() && $form->isValid())) {
+            return $this->redirectToRoute('app_lists');
         }
+    
+        $trainingSettings = $form->getData();
         
         return $this->render('training/index.html.twig', [
-            'controller_name' => 'TrainingController',
+            '$trainingSettings' => $trainingSettings,
         ]);
     }
 }

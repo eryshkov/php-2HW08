@@ -1,0 +1,12 @@
+.carousel-indicators {
+    filter: invert(100%);
+ }
+.carousel-control-next {
+    filter: invert(100%);
+}
+.carousel-control-prev {
+    filter: invert(100%);
+}
+.card {
+    margin: 0px 70px 40px 70px;
+}
