@@ -38,12 +38,10 @@ class ListDetailsController extends BaseController
             return $this->redirectToRoute('app_lists');
         }
     
-        $form = $this->createForm(ListDetailsFormType::class);
-        $form->handleRequest($request);
-    
-        if ($form->isSubmitted() && $form->isValid()) {
-            $userChoice = $form->getData();
-        }
+        $form = $this->createForm(ListDetailsFormType::class, null, [
+            'action' => $this->generateUrl('app_training'),
+            
+        ]);
         
         return $this->render('list_details/index.html.twig', [
             'list' => $list,
