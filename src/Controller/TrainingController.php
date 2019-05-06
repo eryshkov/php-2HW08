@@ -24,6 +24,7 @@ class TrainingController extends AbstractController
         $form->handleRequest($request);
     
         if (!($form->isSubmitted() && $form->isValid())) {
+            $this->addFlash('error', 'Данные тренировки неверные');
             return $this->redirectToRoute('app_lists');
         }
     

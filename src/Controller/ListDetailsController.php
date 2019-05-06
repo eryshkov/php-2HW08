@@ -36,6 +36,7 @@ class ListDetailsController extends BaseController
         ]);
     
         if (!isset($list)) {
+            $this->addFlash('error', 'Не удалось найти список №' . $id);
             return $this->redirectToRoute('app_lists');
         }
     
