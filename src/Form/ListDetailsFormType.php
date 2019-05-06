@@ -18,21 +18,20 @@ class ListDetailsFormType extends AbstractType
             ->add('isShowTranslation', ChoiceType::class, [
                 'choices' => [
                     'Оригинал' => false,
-                    'Перевод' => true,
+                    'Перевод'  => true,
                 ],
-                'label' => 'Что показывать?',
+                'label'   => 'Что показывать?',
             ])
             ->add('isRandom', ChoiceType::class, [
                 'choices' => [
-                    'Да' => true,
+                    'Да'  => true,
                     'Нет' => false,
                 ],
-                'label' => 'Показывать в случайном порядке?',
+                'label'   => 'Показывать в случайном порядке?',
             ])
-            ->add('listId', HiddenType::class)
-        ;
+            ->add('listId', HiddenType::class);
     }
-
+    
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

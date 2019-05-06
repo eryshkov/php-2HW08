@@ -14,22 +14,21 @@ class WordFormType extends AbstractType
     {
         $builder
             ->add('english', TextareaType::class, [
-                'attr' => [
+                'attr'     => [
                     'placeholder' => 'английский вариант',
                 ],
-                'label' => false,
+                'label'    => false,
                 'required' => true,
             ])
             ->add('russian', TextareaType::class, [
-                'attr' => [
+                'attr'     => [
                     'placeholder' => 'русский вариант',
                 ],
-                'label' => false,
+                'label'    => false,
                 'required' => true,
-            ])
-        ;
+            ]);
     }
-
+    
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

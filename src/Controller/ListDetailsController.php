@@ -32,14 +32,14 @@ class ListDetailsController extends BaseController
     {
         $list = $this->wordListRepository->findOneBy([
             'user' => $this->getUser(),
-            'id' => $id,
+            'id'   => $id,
         ]);
-    
+        
         if (!isset($list)) {
             $this->addFlash('error', 'Не удалось найти список №' . $id);
             return $this->redirectToRoute('app_lists');
         }
-    
+        
         $defaultValue = new ListDetailsFormModel();
         $defaultValue->isShowTranslation = false;
         $defaultValue->isRandom = true;
@@ -50,7 +50,7 @@ class ListDetailsController extends BaseController
         ]);
         
         return $this->render('list_details/index.html.twig', [
-            'list' => $list,
+            'list'            => $list,
             'listDetailsForm' => $form->createView(),
         ]);
     }

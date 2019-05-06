@@ -30,9 +30,8 @@ class WordRepository extends ServiceEntityRepository
             ->andWhere('word.list = :list')
             ->setParameter('list', $word->getList())
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    
+            ->getOneOrNullResult();
+        
         return isset($isExist);
     }
     
@@ -54,8 +53,7 @@ class WordRepository extends ServiceEntityRepository
             ->setParameter('list', $list)
             ->orderBy('word.' . $sort)
             ->getQuery()
-            ->getArrayResult()
-        ;
+            ->getArrayResult();
         
         return $words;
     }

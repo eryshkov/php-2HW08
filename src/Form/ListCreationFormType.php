@@ -14,15 +14,14 @@ class ListCreationFormType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'attr' => [
+                'attr'     => [
                     'placeholder' => 'название',
                 ],
-                'label' => false,
+                'label'    => false,
                 'required' => true,
-            ])
-        ;
+            ]);
     }
-
+    
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

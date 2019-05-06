@@ -21,16 +21,16 @@ class UniqueUserValidator extends ConstraintValidator
     public function validate($value, Constraint $constraint)
     {
         /* @var $constraint \App\Validator\UniqueUser */
-
+        
         if (null === $value || '' === $value) {
             return;
         }
-    
+        
         $existingUser = $this->userRepository->findOneBy([
             'email' => $value,
-    
+        
         ]);
-    
+        
         if (isset($existingUser)) {
             $this->context->buildViolation($constraint->message)
                 ->setParameter('{{ email }}', $value)

@@ -49,7 +49,7 @@ class WordCreateController extends BaseController
             'user' => $this->getUser(),
             'id'   => $listId,
         ]);
-    
+        
         if (isset($list) && $form->isSubmitted() && $form->isValid()) {
             /** @var WordFormModel $wordModel */
             $wordModel = $form->getData();
@@ -58,7 +58,7 @@ class WordCreateController extends BaseController
             $word->setEnglish($wordModel->english);
             $word->setRussian($wordModel->russian);
             $word->setList($list);
-    
+            
             if (!$this->wordRepository->isExistAtList($word)) {
                 $this->entityManager->persist($word);
                 $this->entityManager->flush();
@@ -66,14 +66,14 @@ class WordCreateController extends BaseController
             } else {
                 $this->addFlash('error', $word->getEnglish() . ' уже есть в этом списке');
             }
-    
+            
             $form = $this->createForm(WordFormType::class);
         }
         
         return $this->render('word_create/index.html.twig', [
             'wordCreationForm' => $form->createView(),
-            'listIsNotExists' => !isset($list),
-            'listId' => $listId,
+            'listIsNotExists'  => !isset($list),
+            'listId'           => $listId,
         ]);
     }
 }

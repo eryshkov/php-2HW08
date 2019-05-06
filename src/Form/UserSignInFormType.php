@@ -16,22 +16,21 @@ class UserSignInFormType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'attr' => [
+                'attr'     => [
                     'placeholder' => 'email',
                 ],
-                'label' => false,
+                'label'    => false,
                 'required' => true,
             ])
             ->add('plainPassword', PasswordType::class, [
-                'attr' => [
+                'attr'     => [
                     'placeholder' => 'пароль',
                 ],
-                'label' => false,
+                'label'    => false,
                 'required' => true,
-            ])
-        ;
+            ]);
     }
-
+    
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

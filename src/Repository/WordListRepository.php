@@ -18,7 +18,7 @@ class WordListRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, WordList::class);
     }
-
+    
     // /**
     //  * @return WordList[] Returns an array of WordList objects
     //  */
@@ -35,7 +35,7 @@ class WordListRepository extends ServiceEntityRepository
         ;
     }
     */
-
+    
     /*
     public function findOneBySomeField($value): ?WordList
     {

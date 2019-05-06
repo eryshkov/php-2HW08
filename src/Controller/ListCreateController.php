@@ -22,9 +22,9 @@ class ListCreateController extends BaseController
     public function index(Request $request, EntityManagerInterface $entityManager)
     {
         $form = $this->createForm(ListCreationFormType::class);
-    
+        
         $form->handleRequest($request);
-    
+        
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var ListCreationFormModel $listModel */
             $listModel = $form->getData();
@@ -32,10 +32,10 @@ class ListCreateController extends BaseController
             $list->setName(ucfirst($listModel->name));
             $list->setUser($this->getUser());
             $list->setLastAccessDate(new \DateTime());
-    
+            
             $entityManager->persist($list);
             $entityManager->flush();
-    
+            
             return $this->redirectToRoute('app_lists');
         }
         

@@ -25,10 +25,10 @@ class SecurityController extends BaseController
             $userModel->email = $lastUsername;
         }
         $form = $this->createForm(UserSignInFormType::class, $userModel);
-    
+        
         return $this->render('security/login.html.twig', [
             'signInForm' => $form->createView(),
-            'authError' => $error,
+            'authError'  => $error,
         ]);
     }
     

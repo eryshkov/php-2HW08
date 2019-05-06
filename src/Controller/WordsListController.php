@@ -20,10 +20,10 @@ class WordsListController extends AbstractController
     public function index(int $id, WordRepository $wordRepository, WordListRepository $wordListRepository)
     {
         $list = $wordListRepository->findOneBy([
-            'id' => $id,
+            'id'   => $id,
             'user' => $this->getUser(),
         ]);
-    
+        
         if (!isset($list)) {
             return $this->redirectToRoute('app_lists');
         }
@@ -32,7 +32,7 @@ class WordsListController extends AbstractController
         
         return $this->render('words_list/index.html.twig', [
             'words' => $words,
-            'list' => $list,
+            'list'  => $list,
         ]);
     }
 }

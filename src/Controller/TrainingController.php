@@ -24,39 +24,39 @@ class TrainingController extends AbstractController
     {
         $form = $this->createForm(ListDetailsFormType::class);
         $form->handleRequest($request);
-    
+        
         if (!($form->isSubmitted() && $form->isValid())) {
             $this->addFlash('error', 'Данные тренировки неверные');
             return $this->redirectToRoute('app_lists');
         }
-    
+        
         /** @var ListDetailsFormModel $trainingSettings */
         $trainingSettings = $form->getData();
-    
+        
         $list = $wordListRepository->findOneBy([
             'user' => $this->getUser(),
-            'id' => $trainingSettings->listId,
+            'id'   => $trainingSettings->listId,
         ]);
-    
+        
         if (!isset($list)) {
             $this->addFlash('error', 'Не удалось найти список №' . $trainingSettings->listId);
             return $this->redirectToRoute('app_lists');
         }
-    
+        
         $words = $wordRepository->getAllFromListById($list);
-    
+        
         if (!isset($words)) {
             $this->addFlash('error', 'Список №' . $trainingSettings->listId . ' не содержит слов для тренировки');
             return $this->redirectToRoute('app_lists');
         }
-    
+        
         if ($trainingSettings->isRandom) {
             shuffle($words);
         }
         
         return $this->render('training/index.html.twig', [
-            'words' => $words,
-            'list' => $list,
+            'words'            => $words,
+            'list'             => $list,
             'trainingSettings' => $trainingSettings,
         ]);
     }
