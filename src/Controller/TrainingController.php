@@ -51,7 +51,7 @@ class TrainingController extends AbstractController
         }
     
         if ($trainingSettings->isRandom) {
-            //перемешать список
+            shuffle($words);
         }
         
         return $this->render('training/index.html.twig', [
