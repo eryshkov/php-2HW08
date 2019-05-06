@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\ListDetailsFormModel;
 use App\Form\ListDetailsFormType;
 use App\Repository\WordListRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -38,7 +39,11 @@ class ListDetailsController extends BaseController
             return $this->redirectToRoute('app_lists');
         }
     
-        $form = $this->createForm(ListDetailsFormType::class, null, [
+        $defaultValue = new ListDetailsFormModel();
+        $defaultValue->isShowTranslation = false;
+        $defaultValue->isRandom = true;
+        
+        $form = $this->createForm(ListDetailsFormType::class, $defaultValue, [
             'action' => $this->generateUrl('app_training'),
             
         ]);

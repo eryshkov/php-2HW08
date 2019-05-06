@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\ListDetailsFormModel;
 use App\Form\ListDetailsFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,6 +27,7 @@ class TrainingController extends AbstractController
             return $this->redirectToRoute('app_lists');
         }
     
+        /** @var ListDetailsFormModel $trainingSettings */
         $trainingSettings = $form->getData();
         
         return $this->render('training/index.html.twig', [

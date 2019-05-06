@@ -16,8 +16,8 @@ class ListDetailsFormType extends AbstractType
         $builder
             ->add('isShowTranslation', ChoiceType::class, [
                 'choices' => [
-                    'Оригинал' => true,
-                    'Перевод' => false,
+                    'Оригинал' => false,
+                    'Перевод' => true,
                 ],
                 'label' => 'Что показывать?',
             ])
