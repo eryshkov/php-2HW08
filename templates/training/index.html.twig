@@ -26,9 +26,28 @@
                                     Фраза №{{ loop.index }}
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ word.english }}</h5>
-                                    <p class="card-text">{{ word.russian }}</p>
-                                    <a href="#" class="btn btn-primary">Help</a>
+                                    <h5 class="card-title">
+                                        {% if trainingSettings.isShowTranslation %}
+                                            {{ word.russian }}
+                                        {% else %}
+                                            {{ word.english }}
+                                        {% endif %}
+                                    </h5>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-info dropdown-toggle"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Правильный ответ
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">
+                                                {% if trainingSettings.isShowTranslation %}
+                                                    {{ word.english }}
+                                                {% else %}
+                                                    {{ word.russian }}
+                                                {% endif %}
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
