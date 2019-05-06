@@ -28,7 +28,7 @@ class WordsListController extends AbstractController
             return $this->redirectToRoute('app_lists');
         }
         
-        $words = $wordRepository->getAllFromList($list);
+        $words = $wordRepository->getAllFromListByAlphabet($list);
         
         return $this->render('words_list/index.html.twig', [
             'words' => $words,

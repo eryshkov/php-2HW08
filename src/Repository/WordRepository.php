@@ -37,10 +37,11 @@ class WordRepository extends ServiceEntityRepository
     }
     
     /**
+     * @param string $sort
      * @param WordList $list
      * @return Word[]|null
      */
-    public function getAllFromList(WordList $list): ?array
+    protected function getAllFromListBy(string $sort, WordList $list): ?array
     {
         if (!isset($list)) {
             return null;
@@ -51,12 +52,30 @@ class WordRepository extends ServiceEntityRepository
             ->setParameter('user', $list->getUser())
             ->andWhere('word.list = :list')
             ->setParameter('list', $list)
-            ->orderBy('word.english')
+            ->orderBy('word.' . $sort)
             ->getQuery()
             ->getArrayResult()
         ;
         
         return $words;
+    }
+    
+    /**
+     * @param WordList $list
+     * @return Word[]|null
+     */
+    public function getAllFromListByAlphabet(WordList $list): ?array
+    {
+        return $this->getAllFromListBy('english', $list);
+    }
+    
+    /**
+     * @param WordList $list
+     * @return Word[]|null
+     */
+    public function getAllFromListById(WordList $list): ?array
+    {
+        return $this->getAllFromListBy('id', $list);
     }
     
     // /**
