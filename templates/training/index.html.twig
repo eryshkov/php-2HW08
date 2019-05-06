@@ -23,7 +23,7 @@
                         <div class="carousel-item{% if loop.first %} active{% endif %}">
                             <div class="card">
                                 <div class="card-header">
-                                    Фраза №{{ loop.index }}
+                                    Фраза №{{ loop.index }} из {{ loop.length }}
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">
@@ -48,6 +48,9 @@
                                             </a>
                                         </div>
                                     </div>
+                                    {% if loop.last %}
+                                        <a class="btn btn-success" href="{{ path('app_list_details', {'id': list.id}) }}">Вернуться к списку</a>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
