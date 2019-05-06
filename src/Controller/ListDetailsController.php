@@ -42,10 +42,10 @@ class ListDetailsController extends BaseController
         $defaultValue = new ListDetailsFormModel();
         $defaultValue->isShowTranslation = false;
         $defaultValue->isRandom = true;
+        $defaultValue->listId = $list->getId();
         
         $form = $this->createForm(ListDetailsFormType::class, $defaultValue, [
             'action' => $this->generateUrl('app_training'),
-            
         ]);
         
         return $this->render('list_details/index.html.twig', [

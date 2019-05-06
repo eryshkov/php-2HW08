@@ -16,4 +16,8 @@ class ListDetailsFormModel
      * @var bool
      */
     public $isShowTranslation;
+    /**
+     * @var int
+     */
+    public $listId;
 }

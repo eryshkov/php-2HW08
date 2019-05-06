@@ -29,6 +29,8 @@ class TrainingController extends AbstractController
     
         /** @var ListDetailsFormModel $trainingSettings */
         $trainingSettings = $form->getData();
+    
+        dd($trainingSettings);
         
         return $this->render('training/index.html.twig', [
             '$trainingSettings' => $trainingSettings,
