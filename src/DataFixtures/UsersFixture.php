@@ -34,15 +34,15 @@ class UsersFixture extends BaseFixture
     protected function loadData(ObjectManager $manager): void
     {
         $user = new User();
-    
+        
         $user->setEmail('admin@mac.mac');
-    
+        
         $user->setPassword($this->passwordEncoder->encodePassword($user, 'test'));
-    
+        
         $user->setRegDate(new \DateTime());
         
         $manager->persist($user);
-    
+        
         $this->createMany(User::class, 10, function (User $user) {
             $user->setEmail($this->faker->email);
             $user->setPassword($this->passwordEncoder->encodePassword($user, 'test'));
@@ -51,15 +51,15 @@ class UsersFixture extends BaseFixture
             $user->setLastName($this->faker->lastName);
             $user->setMiddleName($this->faker->colorName);
         });
-    
+        
         $manager->flush();
         
         $users = $this->userRepository->findAll();
-    
+        
         if (!isset($users)) {
             throw new \LogicException('No users found');
         }
-    
+        
         $count = count($users) * 3;
         while ($count > 0) {
             /** @var User $user */
@@ -68,9 +68,9 @@ class UsersFixture extends BaseFixture
             $manager->persist($user);
             $count--;
         }
-    
+        
         $user = $this->userRepository->findOneBy([
-            'email' => 'admin@mac.mac'
+            'email' => 'admin@mac.mac',
         ]);
         $user->setRoles([
             'ROLE_ADMIN',

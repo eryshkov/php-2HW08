@@ -39,15 +39,15 @@ class UserDeleteController extends BaseController
         $user = $this->userRepository->findOneBy([
             'id' => $id,
         ]);
-    
+        
         if (!isset($user)) {
             $this->addFlash('error', 'Пользователь не может быть удален');
             $this->redirectToRoute('app_admin');
         }
-    
+        
         $this->entityManager->remove($user);
         $this->entityManager->flush();
-    
+        
         return $this->render('user_delete/index.html.twig', [
             'deletedUser' => $user,
         ]);

@@ -23,7 +23,7 @@ class WordFixture extends BaseFixture implements DependentFixtureInterface
     protected function loadData(ObjectManager $manager)
     {
         $lists = $this->wordListRepository->findAll();
-    
+        
         if (!isset($lists)) {
             throw new \LogicException('No lists found');
         }
