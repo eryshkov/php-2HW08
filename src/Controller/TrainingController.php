@@ -7,7 +7,6 @@ use App\Form\ListDetailsFormType;
 use App\Repository\WordListRepository;
 use App\Repository\WordRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -15,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class TrainingController
  * @IsGranted("ROLE_USER")
  */
-class TrainingController extends AbstractController
+class TrainingController extends BaseController
 {
     /**
      * @Route("/training", name="app_training")

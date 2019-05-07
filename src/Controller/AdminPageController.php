@@ -4,14 +4,13 @@ namespace App\Controller;
 
 use App\Repository\UserRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class AdminPageController
  * @IsGranted("ROLE_ADMIN")
  */
-class AdminPageController extends AbstractController
+class AdminPageController extends BaseController
 {
     /**
      * @Route("/admin", name="app_admin")
