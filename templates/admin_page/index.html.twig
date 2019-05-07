@@ -9,6 +9,7 @@
                 <thead>
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col"></th>
                     <th scope="col">Email</th>
                     <th scope="col">Roles</th>
                     <th scope="col">First Name</th>
@@ -20,16 +21,19 @@
                 {% set num = 1 %}
                 {% for user in users %}
                     <tr>
-                        <th scope="row">{{ num }}</th>
-                        <td>{{ user.email }}</td>
-                        <td>
+                        <th scope="row" class="align-middle text-left">{{ num }}</th>
+                        <td class="align-middle text-left">
+                            <a href="#" class="badge badge-danger badge-pill">X</a>
+                        </td>
+                        <td class="align-middle text-left">{{ user.email }}<a href="#" class="badge badge-success badge-pill ml-2">✎</a></td>
+                        <td class="align-middle text-left">
                             {% for role in user.roles %}
                                 <p>{{ role }}</p>
                             {% endfor %}
                         </td>
-                        <td>{{ user.firstName }}</td>
-                        <td>{{ user.middleName }}</td>
-                        <td>{{ user.lastName }}</td>
+                        <td class="align-middle text-left">{{ user.firstName }}</td>
+                        <td class="align-middle text-left">{{ user.middleName }}</td>
+                        <td class="align-middle text-left">{{ user.lastName }}</td>
                     </tr>
                     {% set num = num + 1 %}
                 {% else %}
