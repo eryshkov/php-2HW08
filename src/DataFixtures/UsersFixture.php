@@ -47,6 +47,9 @@ class UsersFixture extends BaseFixture
             $user->setEmail($this->faker->email);
             $user->setPassword($this->passwordEncoder->encodePassword($user, 'test'));
             $user->setRegDate($this->faker->dateTimeBetween('-1 months', '-1 seconds'));
+            $user->setFirstName($this->faker->firstName);
+            $user->setLastName($this->faker->lastName);
+            $user->setMiddleName($this->faker->colorName);
         });
     
         $manager->flush();
