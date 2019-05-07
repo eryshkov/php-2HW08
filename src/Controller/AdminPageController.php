@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\UserRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,10 +16,12 @@ class AdminPageController extends AbstractController
     /**
      * @Route("/admin", name="app_admin")
      */
-    public function index()
+    public function index(UserRepository $userRepository)
     {
+        $users = $userRepository->findAll();
+        
         return $this->render('admin_page/index.html.twig', [
-            'controller_name' => 'AdminPageController',
+            'users' => $users,
         ]);
     }
 }
