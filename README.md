@@ -1,5 +1,5 @@
 #  Home work 8
-Приложение-тренер английских слов и фраз.
+Приложение-тренер английских слов и фраз. Работающий экземпляр приложения можно посмотреть [здесь](https://englishbook.eugem.ru)
 
 <p align="center">
 <img src="https://img.shields.io/badge/PHP-7.3-orange.svg" alt="PHP-7.3"/>
