@@ -56,12 +56,12 @@ class User implements UserInterface
     private $lastName;
     
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Word", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\Word", mappedBy="user", orphanRemoval=true)
      */
     private $words;
     
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\WordList", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\WordList", mappedBy="user", orphanRemoval=true)
      */
     private $wordLists;
     
