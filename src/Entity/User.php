@@ -129,7 +129,7 @@ class User implements UserInterface
      */
     public function getPassword(): string
     {
-        return (string)$this->password;
+        return $this->password;
     }
     
     public function setPassword(string $password): self

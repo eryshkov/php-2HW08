@@ -40,8 +40,11 @@ class WordCreateController extends BaseController
     
     /**
      * @Route("/word/create/{listId}", name="app_word_create")
+     * @param int $listId
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index(int $listId, Request $request)
+    public function index(int $listId, Request $request): \Symfony\Component\HttpFoundation\Response
     {
         $form = $this->createForm(WordFormType::class);
         $form->handleRequest($request);

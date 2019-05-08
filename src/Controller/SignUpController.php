@@ -16,6 +16,13 @@ class SignUpController extends BaseController
 {
     /**
      * @Route("/signup", name="app_sign_up")
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @param EntityManagerInterface $entityManager
+     * @param GuardAuthenticatorHandler $guardAuthenticationHandler
+     * @param LoginFormAuthenticator $loginFormAuthenticator
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     * @throws \Exception
      */
     public function index(Request $request, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $entityManager, GuardAuthenticatorHandler $guardAuthenticationHandler, LoginFormAuthenticator $loginFormAuthenticator)
     {

@@ -12,6 +12,8 @@ class SecurityController extends BaseController
 {
     /**
      * @Route("/login", name="app_login")
+     * @param AuthenticationUtils $authenticationUtils
+     * @return Response
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
@@ -35,9 +37,9 @@ class SecurityController extends BaseController
     /**
      * @Route("/logout", name="app_logout")
      */
-    public function logout()
+    public function logout(): void
     {
         // controller can be blank: it will never be executed!
-        throw new \Exception('Don\'t forget to activate logout in security.yaml');
+        throw new \RuntimeException('Don\'t forget to activate logout in security.yaml');
     }
 }

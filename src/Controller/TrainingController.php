@@ -18,6 +18,10 @@ class TrainingController extends BaseController
 {
     /**
      * @Route("/training", name="app_training")
+     * @param Request $request
+     * @param WordRepository $wordRepository
+     * @param WordListRepository $wordListRepository
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function index(Request $request, WordRepository $wordRepository, WordListRepository $wordListRepository)
     {

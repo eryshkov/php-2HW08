@@ -14,8 +14,10 @@ class AdminPageController extends BaseController
 {
     /**
      * @Route("/admin", name="app_admin")
+     * @param UserRepository $userRepository
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index(UserRepository $userRepository)
+    public function index(UserRepository $userRepository): \Symfony\Component\HttpFoundation\Response
     {
         $users = $userRepository->findAll();
         

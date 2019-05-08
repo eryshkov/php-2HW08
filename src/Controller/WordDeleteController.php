@@ -16,8 +16,12 @@ class WordDeleteController extends BaseController
 {
     /**
      * @Route("/word/{id}/delete", name="app_word_delete")
+     * @param int $id
+     * @param WordRepository $wordRepository
+     * @param EntityManagerInterface $entityManager
+     * @return RedirectResponse
      */
-    public function index(int $id, WordRepository $wordRepository, EntityManagerInterface $entityManager)
+    public function index(int $id, WordRepository $wordRepository, EntityManagerInterface $entityManager): RedirectResponse
     {
         $word = $wordRepository->findOneBy([
             'id' => $id,

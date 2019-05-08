@@ -15,6 +15,10 @@ class WordsListController extends BaseController
 {
     /**
      * @Route("/words/list/{id}", name="app_words_list")
+     * @param int $id
+     * @param WordRepository $wordRepository
+     * @param WordListRepository $wordListRepository
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function index(int $id, WordRepository $wordRepository, WordListRepository $wordListRepository)
     {

@@ -35,7 +35,7 @@ class UserDeleteController extends BaseController
      * @param int $id
      * @return Response
      */
-    public function index(int $id)
+    public function index(int $id): Response
     {
         $user = $this->userRepository->findOneBy([
             'id' => $id,
