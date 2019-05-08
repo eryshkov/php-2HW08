@@ -6,7 +6,6 @@ use App\Entity\WordList;
 use App\Repository\UserRepository;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\Debug\Exception\FatalErrorException;
 
 class ListFixture extends BaseFixture implements DependentFixtureInterface
 {

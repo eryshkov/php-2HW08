@@ -6,7 +6,6 @@ use App\Entity\User;
 use App\Form\UserSignInFormModel;
 use App\Form\UserSignInFormType;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;

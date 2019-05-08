@@ -27,8 +27,10 @@ class ListDetailsController extends BaseController
     
     /**
      * @Route("/list/{id}/details", name="app_list_details")
+     * @param int $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function index(int $id, Request $request)
+    public function index(int $id)
     {
         $list = $this->wordListRepository->findOneBy([
             'user' => $this->getUser(),
