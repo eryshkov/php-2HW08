@@ -1,20 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello WordEditController!{% endblock %}
+{% block title %}Word Edit{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/eugem/Developer/PHP/php-2HW08.mac/src/Controller/WordEditController.php'|file_link(0) }}">src/Controller/WordEditController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/eugem/Developer/PHP/php-2HW08.mac/templates/word_edit/index.html.twig'|file_link(0) }}">templates/word_edit/index.html.twig</a></code></li>
-    </ul>
+<div class="row justify-content-center">
+    <div class="col-4">
+        {{ form_start(editForm) }}
+        {{ form_row(editForm.english) }}
+        {{ form_row(editForm.russian) }}
+        {{ form_row(editForm.list) }}
+        <button type="submit" class="btn btn-primary">OK</button>
+            <a href="{{ path('app_lists') }}" class="btn btn-secondary">Отмена</a>
+        {{ form_end(editForm) }}
+    </div>
 </div>
 {% endblock %}

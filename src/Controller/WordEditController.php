@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Form\WordEditFormModel;
+use App\Form\WordEditFormType;
 use App\Repository\WordRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -28,9 +30,16 @@ class WordEditController extends BaseController
             $this->addFlash('error', 'Вы не можете изменять это слово');
             return new RedirectResponse($this->generateUrl('app_lists'));
         }
+    
+        $wordModel = new WordEditFormModel();
+        $wordModel->english = $word->getEnglish();
+        $wordModel->russian = $word->getRussian();
+        $wordModel->list = $word->getList();
+        
+        $form = $this->createForm(WordEditFormType::class, $wordModel);
         
         return $this->render('word_edit/index.html.twig', [
-            'controller_name' => 'WordEditController',
+            'editForm' => $form->createView(),
         ]);
     }
 }
