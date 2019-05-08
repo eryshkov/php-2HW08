@@ -8,18 +8,22 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">English</th>
-                    <th scope="col">Russian</th>
+                    <th scope="col" class="align-middle text-left">#</th>
+                    <th scope="col" class="align-middle text-left"></th>
+                    <th scope="col" class="align-middle text-left"></th>
+                    <th scope="col" class="align-middle text-left">English</th>
+                    <th scope="col" class="align-middle text-left">Russian</th>
                 </tr>
                 </thead>
                 <tbody>
                 {% set num = 1 %}
                 {% for word in words %}
                     <tr>
-                        <th scope="row">{{ num }}</th>
-                        <td>{{ word.english }}</td>
-                        <td>{{ word.russian }}</td>
+                        <th scope="row" class="align-middle text-left">{{ num }}</th>
+                        <td class="align-middle text-left"><a href="{{ path('app_word_delete', {'id': word.id}) }}" class="badge badge-danger badge-pill">X</a></td>
+                        <td class="align-middle text-left"><a href="#" class="badge badge-success badge-pill ml-2">✎</a></td>
+                        <td class="align-middle text-left">{{ word.english }}</td>
+                        <td class="align-middle text-left">{{ word.russian }}</td>
                     </tr>
                     {% set num = num + 1 %}
                 {% else %}

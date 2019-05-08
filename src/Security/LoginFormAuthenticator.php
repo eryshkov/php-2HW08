@@ -28,15 +28,13 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     private $urlGenerator;
     private $passwordEncoder;
     private $formFactory;
-    private $containerBag;
     
-    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, UserPasswordEncoderInterface $passwordEncoder, FormFactoryInterface $formFactory, ContainerBagInterface $containerBag)
+    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, UserPasswordEncoderInterface $passwordEncoder, FormFactoryInterface $formFactory)
     {
         $this->entityManager = $entityManager;
         $this->urlGenerator = $urlGenerator;
         $this->passwordEncoder = $passwordEncoder;
         $this->formFactory = $formFactory;
-        $this->containerBag = $containerBag;
     }
     
     public function supports(Request $request)

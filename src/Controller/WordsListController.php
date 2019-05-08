@@ -27,7 +27,7 @@ class WordsListController extends BaseController
             return $this->redirectToRoute('app_lists');
         }
         
-        $words = $wordRepository->getAllFromListByAlphabet($list);
+        $words = $wordRepository->getAllFromListByIdDESC($list);
         
         return $this->render('words_list/index.html.twig', [
             'words' => $words,
