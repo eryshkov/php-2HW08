@@ -36,7 +36,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         $this->formFactory = $formFactory;
     }
     
-    public function supports(Request $request)
+    public function supports(Request $request): bool
     {
         return 'app_login' === $request->attributes->get('_route')
             && $request->isMethod('POST');
@@ -75,7 +75,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         return $user;
     }
     
-    public function checkCredentials($credentials, UserInterface $user)
+    public function checkCredentials($credentials, UserInterface $user): bool
     {
         /** @var UserSignInFormModel $credentials */
         $isPasswordValid = $this->passwordEncoder->isPasswordValid($user, $credentials->plainPassword);
@@ -96,7 +96,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         return new RedirectResponse($this->urlGenerator->generate('app_lists'));
     }
     
-    protected function getLoginUrl()
+    protected function getLoginUrl(): string
     {
         return $this->urlGenerator->generate('app_login');
     }

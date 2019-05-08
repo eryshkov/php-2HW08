@@ -18,7 +18,7 @@ class UniqueUserValidator extends ConstraintValidator
         $this->userRepository = $userRepository;
     }
     
-    public function validate($value, Constraint $constraint)
+    public function validate($value, Constraint $constraint): void
     {
         /* @var $constraint \App\Validator\UniqueUser */
         

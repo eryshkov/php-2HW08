@@ -10,7 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ListDetailsFormType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('isShowTranslation', ChoiceType::class, [
@@ -30,7 +30,7 @@ class ListDetailsFormType extends AbstractType
             ->add('listId', HiddenType::class);
     }
     
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => ListDetailsFormModel::class,
