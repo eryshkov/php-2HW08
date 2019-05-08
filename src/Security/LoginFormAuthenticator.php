@@ -80,11 +80,11 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         /** @var UserSignInFormModel $credentials */
         $isPasswordValid = $this->passwordEncoder->isPasswordValid($user, $credentials->plainPassword);
         
-        if ($isPasswordValid) {
-            return $isPasswordValid;
-        } else {
+        if (!$isPasswordValid) {
             throw new CustomUserMessageAuthenticationException('Неверный пароль');
         }
+    
+        return $isPasswordValid;
     }
     
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
