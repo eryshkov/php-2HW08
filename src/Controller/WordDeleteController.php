@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Repository\WordRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -15,7 +17,7 @@ class WordDeleteController extends BaseController
     /**
      * @Route("/word/{id}/delete", name="app_word_delete")
      */
-    public function index(int $id, WordRepository $wordRepository)
+    public function index(int $id, WordRepository $wordRepository, EntityManagerInterface $entityManager)
     {
         $word = $wordRepository->findOneBy([
             'id' => $id,
@@ -24,11 +26,16 @@ class WordDeleteController extends BaseController
     
         if (!isset($word)) {
             $this->addFlash('error', 'Вы не можете удалить это слово');
-            
+            return new RedirectResponse($this->generateUrl('app_lists'));
         }
-        
-        return $this->render('word_delete/index.html.twig', [
-            'controller_name' => 'WordDeleteController',
-        ]);
+    
+        $list = $word->getList();
+        $entityManager->remove($word);
+        $entityManager->flush();
+    
+        $this->addFlash('success', 'Слово успешно удалено');
+        return new RedirectResponse($this->generateUrl('app_words_list', [
+            'id' => $list->getId(),
+        ]));
     }
 }
