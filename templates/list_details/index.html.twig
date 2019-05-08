@@ -10,12 +10,14 @@
     </div>
     <div class="row">
         <div class="col">
-            <p>Всего слов:<a class="badge badge-success ml-2" href="{{ path('app_words_list', {'id': list.id}) }}">{{ list.words|length }}</a></p>
+            <p>Всего слов:<a class="badge badge-success ml-2"
+                             href="{{ path('app_words_list', {'id': list.id}) }}">{{ list.words|length }}</a></p>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <p>Дата последней тренировки:<span class="badge badge-info ml-2">{{ list.lastAccessDate|date('d.m.Y') }}</span></p>
+            <p>Дата последней тренировки:<span
+                        class="badge badge-info ml-2">{{ list.lastAccessDate|date('d.m.Y') }}</span></p>
         </div>
     </div>
     <div class="row mt-2">

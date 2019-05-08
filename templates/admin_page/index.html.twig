@@ -23,9 +23,12 @@
                     <tr>
                         <th scope="row" class="align-middle text-left">{{ num }}</th>
                         <td class="align-middle text-left">
-                            <a href="{{ path('app_user_delete', {'id': user.id}) }}" class="badge badge-danger badge-pill">X</a>
+                            <a href="{{ path('app_user_delete', {'id': user.id}) }}"
+                               class="badge badge-danger badge-pill">X</a>
                         </td>
-                        <td class="align-middle text-left">{{ user.email }}<a href="#" class="badge badge-success badge-pill ml-2">✎</a></td>
+                        <td class="align-middle text-left">{{ user.email }}<a href="#"
+                                                                              class="badge badge-success badge-pill ml-2">✎</a>
+                        </td>
                         <td class="align-middle text-left">
                             {% for role in user.roles %}
                                 <p>{{ role }}</p>

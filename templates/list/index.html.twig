@@ -19,8 +19,10 @@
                 <ul class="list-group">
                     {% for item in wordList %}
                         <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-                            <a href="{{ path('app_list_details', {'id': item.id}) }}" class="btn-link">{{ item.name }}</a>
-                            <a class="badge badge-success ml-3" href="{{ path('app_words_list', {'id': item.id}) }}">{{ item.words|length }}</a>
+                            <a href="{{ path('app_list_details', {'id': item.id}) }}"
+                               class="btn-link">{{ item.name }}</a>
+                            <a class="badge badge-success ml-3"
+                               href="{{ path('app_words_list', {'id': item.id}) }}">{{ item.words|length }}</a>
                             <span class="badge badge-info ml-3">{{ item.lastAccessDate|date('d.m.Y') }}</span>
                         </li>
                     {% endfor %}
