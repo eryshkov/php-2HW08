@@ -49,7 +49,7 @@ class SignUpController extends BaseController
                 $request,
                 $loginFormAuthenticator,
                 'main');
-    
+            
             if (isset($successResponse)) {
                 return $successResponse;
             }

@@ -49,7 +49,7 @@ class UserDeleteController extends BaseController
         $this->entityManager->remove($user);
         $this->entityManager->flush();
         
-        $this->addFlash('success', 'Пользователь '.$user->getEmail() . ' успешно удален');
+        $this->addFlash('success', 'Пользователь ' . $user->getEmail() . ' успешно удален');
         return new RedirectResponse($this->generateUrl('app_admin'));
     }
 }

@@ -24,19 +24,19 @@ class WordDeleteController extends BaseController
     public function index(int $id, WordRepository $wordRepository, EntityManagerInterface $entityManager): RedirectResponse
     {
         $word = $wordRepository->findOneBy([
-            'id' => $id,
+            'id'   => $id,
             'user' => $this->getUser(),
         ]);
-    
+        
         if (!isset($word)) {
             $this->addFlash('error', 'Вы не можете удалить это слово');
             return new RedirectResponse($this->generateUrl('app_lists'));
         }
-    
+        
         $list = $word->getList();
         $entityManager->remove($word);
         $entityManager->flush();
-    
+        
         $this->addFlash('success', 'Слово успешно удалено');
         return new RedirectResponse($this->generateUrl('app_words_list', [
             'id' => $list->getId(),

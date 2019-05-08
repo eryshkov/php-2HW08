@@ -83,7 +83,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         if (!$isPasswordValid) {
             throw new CustomUserMessageAuthenticationException('Неверный пароль');
         }
-    
+        
         return $isPasswordValid;
     }
     
