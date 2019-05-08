@@ -2,16 +2,36 @@
 
 namespace App\Form;
 
+use App\Entity\User;
+use App\Entity\WordList;
+use App\Repository\WordListRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Security\Core\Security;
 
 class WordEditFormType extends AbstractType
 {
+    /**
+     * @var Security
+     */
+    private $security;
+    
+    /**
+     * WordEditFormType constructor.
+     */
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
+    
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        /** @var User $currentUser */
+        $currentUser = $this->security->getUser();
+        
         $builder
             ->add('english', TextareaType::class, [
                 'attr'     => [
@@ -27,12 +47,13 @@ class WordEditFormType extends AbstractType
                 'label'    => false,
                 'required' => true,
             ])
-            ->add('list', TextType::class, [
-                'label'   => 'Список',
-            ])
-        ;
+            ->add('list', EntityType::class, [
+                'class'        => WordList::class,
+                'label'        => 'Список',
+                'choices' => $currentUser->getWordLists(),
+            ]);
     }
-
+    
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
