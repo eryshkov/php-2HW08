@@ -1,4 +1,10 @@
 #  Home work 8
+
+<div align = "center">
+<img src="/screens/hw08.png" width="100%">  
+<br>
+</div>
+
 Приложение-тренер английских слов и фраз. Работающий экземпляр приложения можно посмотреть [здесь](https://englishbook.eugem.ru)
 
 <p align="center">
