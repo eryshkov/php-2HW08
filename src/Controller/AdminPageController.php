@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\UserRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -15,9 +16,9 @@ class AdminPageController extends BaseController
     /**
      * @Route("/admin", name="app_admin")
      * @param UserRepository $userRepository
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
-    public function index(UserRepository $userRepository): \Symfony\Component\HttpFoundation\Response
+    public function index(UserRepository $userRepository): Response
     {
         $users = $userRepository->findAll();
         

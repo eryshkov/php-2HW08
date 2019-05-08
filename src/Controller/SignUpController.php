@@ -8,6 +8,7 @@ use App\Form\UserRegistrationFormModel;
 use App\Security\LoginFormAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
@@ -21,10 +22,10 @@ class SignUpController extends BaseController
      * @param EntityManagerInterface $entityManager
      * @param GuardAuthenticatorHandler $guardAuthenticationHandler
      * @param LoginFormAuthenticator $loginFormAuthenticator
-     * @return \Symfony\Component\HttpFoundation\Response|null
+     * @return Response|null
      * @throws \Exception
      */
-    public function index(Request $request, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $entityManager, GuardAuthenticatorHandler $guardAuthenticationHandler, LoginFormAuthenticator $loginFormAuthenticator)
+    public function index(Request $request, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $entityManager, GuardAuthenticatorHandler $guardAuthenticationHandler, LoginFormAuthenticator $loginFormAuthenticator): Response
     {
         $form = $this->createForm(SignUpFormType::class);
         
@@ -43,11 +44,15 @@ class SignUpController extends BaseController
             $entityManager->persist($user);
             $entityManager->flush();
             
-            return $guardAuthenticationHandler->authenticateUserAndHandleSuccess(
+            $successResponse = $guardAuthenticationHandler->authenticateUserAndHandleSuccess(
                 $user,
                 $request,
                 $loginFormAuthenticator,
                 'main');
+    
+            if (isset($successResponse)) {
+                return $successResponse;
+            }
         }
         
         return $this->render('sign_up/index.html.twig', [
