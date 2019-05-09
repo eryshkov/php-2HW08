@@ -7,6 +7,7 @@ use App\Form\WordEditFormType;
 use App\Repository\WordRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -19,7 +20,7 @@ class WordEditController extends BaseController
     /**
      * @Route("/word/{id}/edit", name="app_word_edit")
      */
-    public function index(int $id, WordRepository $wordRepository): Response
+    public function index(int $id, WordRepository $wordRepository, Request $request): Response
     {
         $word = $wordRepository->findOneBy([
             'id'   => $id,
@@ -37,6 +38,12 @@ class WordEditController extends BaseController
         $wordModel->list = $word->getList();
         
         $form = $this->createForm(WordEditFormType::class, $wordModel);
+        $form->handleRequest($request);
+    
+        if ($form->isSubmitted() && $form->isValid()) {
+            $wordModelSubmitted = $form->getData();
+            dd($wordModelSubmitted);
+        }
         
         return $this->render('word_edit/index.html.twig', [
             'editForm' => $form->createView(),
