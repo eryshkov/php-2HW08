@@ -10,7 +10,7 @@
         {{ form_row(editForm.russian) }}
         {{ form_row(editForm.list) }}
         <button type="submit" class="btn btn-primary">OK</button>
-            <a href="{{ path('app_lists') }}" class="btn btn-secondary">Отмена</a>
+            <a href="{{ path('app_words_list', {'id': list.id}) }}" class="btn btn-secondary">Отмена</a>
         {{ form_end(editForm) }}
     </div>
 </div>

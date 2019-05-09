@@ -60,6 +60,7 @@ class WordEditController extends BaseController
         
         return $this->render('word_edit/index.html.twig', [
             'editForm' => $form->createView(),
+            'list' => $word->getList(),
         ]);
     }
 }
