@@ -45,7 +45,13 @@ class WordEditController extends BaseController
             $wordModelSubmitted = $form->getData();
             $word->setEnglish($wordModelSubmitted->english);
             $word->setRussian($wordModelSubmitted->russian);
-            $word->setList($wordModelSubmitted->list);
+            
+            if ($wordModelSubmitted->list->isGrantedFor($this->getUser())) {
+                $word->setList($wordModelSubmitted->list);
+            } else {
+                $this->addFlash('error', 'Вы не можете поместить слово в список '. $wordModelSubmitted->list->getName());
+                return $this->redirectToRoute('app_lists');
+            }
     
             $entityManager->persist($word);
             $entityManager->flush();

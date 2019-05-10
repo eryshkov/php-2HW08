@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Repository\WordListRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -114,6 +115,11 @@ class WordList
         $this->user = $user;
         
         return $this;
+    }
+    
+    public function isGrantedFor(User $user): bool
+    {
+        return $this->getUser() === $user;
     }
     
     public function __toString()
