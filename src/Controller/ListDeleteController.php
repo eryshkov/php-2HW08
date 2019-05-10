@@ -12,6 +12,10 @@ class ListDeleteController extends BaseController
 {
     /**
      * @Route("/list/{id}/delete", name="app_list_delete")
+     * @param int $id
+     * @param WordListRepository $wordListRepository
+     * @param EntityManagerInterface $entityManager
+     * @return Response
      */
     public function index(int $id, WordListRepository $wordListRepository, EntityManagerInterface $entityManager): Response
     {
