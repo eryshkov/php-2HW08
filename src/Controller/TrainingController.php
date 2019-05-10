@@ -50,7 +50,7 @@ class TrainingController extends BaseController
         
         $words = $wordRepository->getAllFromListById($list);
         
-        if (!isset($words)) {
+        if (!isset($words) || count($words) < 1) {
             $this->addFlash('error', 'Список №' . $trainingSettings->listId . ' не содержит слов для тренировки');
             return $this->redirectToRoute('app_lists');
         }
