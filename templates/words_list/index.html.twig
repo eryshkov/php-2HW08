@@ -4,6 +4,14 @@
 
 {% block body %}
     <div class="row mt-3">
+        <div class="col-auto">
+            <a href="{{ path('app_list_delete', {'id': list.id}) }}" class="btn btn-outline-danger">Удалить весь список</a>
+        </div>
+        <div class="col-auto">
+            <a href="{{ path('app_list_details', {'id': list.id}) }}" class="btn btn-outline-secondary">Информация о списке</a>
+        </div>
+    </div>
+    <div class="row mt-3">
         <div class="col">
             <table class="table table-hover">
                 <thead>
