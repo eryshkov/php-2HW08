@@ -20,7 +20,9 @@ class AdminPageController extends BaseController
      */
     public function index(UserRepository $userRepository): Response
     {
-        $users = $userRepository->findAll();
+        $users = $userRepository->findBy([], [
+            'id' => 'DESC',
+        ]);
         
         return $this->render('admin_page/index.html.twig', [
             'users' => $users,
