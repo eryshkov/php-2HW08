@@ -7,7 +7,9 @@ use App\Form\ListDetailsFormType;
 use App\Repository\WordListRepository;
 use App\Repository\WordRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -21,9 +23,9 @@ class TrainingController extends BaseController
      * @param Request $request
      * @param WordRepository $wordRepository
      * @param WordListRepository $wordListRepository
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return RedirectResponse|Response
      */
-    public function index(Request $request, WordRepository $wordRepository, WordListRepository $wordListRepository)
+    public function index(Request $request, WordRepository $wordRepository, WordListRepository $wordListRepository): Response
     {
         $form = $this->createForm(ListDetailsFormType::class);
         $form->handleRequest($request);

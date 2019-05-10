@@ -10,6 +10,7 @@ use App\Form\WordFormModel;
 use App\Form\WordFormType;
 use App\Repository\WordListRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -42,9 +43,9 @@ class WordCreateController extends BaseController
      * @Route("/word/create/{listId}", name="app_word_create")
      * @param int $listId
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
-    public function index(int $listId, Request $request): \Symfony\Component\HttpFoundation\Response
+    public function index(int $listId, Request $request): Response
     {
         $form = $this->createForm(WordFormType::class);
         $form->handleRequest($request);

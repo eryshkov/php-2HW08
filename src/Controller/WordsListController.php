@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Repository\WordListRepository;
 use App\Repository\WordRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -18,9 +20,9 @@ class WordsListController extends BaseController
      * @param int $id
      * @param WordRepository $wordRepository
      * @param WordListRepository $wordListRepository
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return RedirectResponse|Response
      */
-    public function index(int $id, WordRepository $wordRepository, WordListRepository $wordListRepository)
+    public function index(int $id, WordRepository $wordRepository, WordListRepository $wordListRepository): Response
     {
         $list = $wordListRepository->findOneBy([
             'id'   => $id,

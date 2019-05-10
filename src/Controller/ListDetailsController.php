@@ -6,6 +6,8 @@ use App\Form\ListDetailsFormModel;
 use App\Form\ListDetailsFormType;
 use App\Repository\WordListRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -27,9 +29,9 @@ class ListDetailsController extends BaseController
     /**
      * @Route("/list/{id}/details", name="app_list_details")
      * @param int $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return RedirectResponse|Response
      */
-    public function index(int $id)
+    public function index(int $id): Response
     {
         $list = $this->wordListRepository->findOneBy([
             'user' => $this->getUser(),
