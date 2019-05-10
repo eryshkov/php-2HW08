@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Repository\WordListRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -26,7 +25,7 @@ class ListDeleteController extends BaseController
         
         if (!isset($list)) {
             $this->addFlash('error', 'Невозможно удалить этот список');
-            return new RedirectResponse($this->generateUrl('app_lists'));
+            return $this->redirectToRoute('app_lists');
         }
         
         $entityManager->remove($list);
@@ -34,6 +33,6 @@ class ListDeleteController extends BaseController
         
         $this->addFlash('success', 'Список ' . $list->getName() . ' успешно удален');
         
-        return new RedirectResponse($this->generateUrl('app_lists'));
+        return $this->redirectToRoute('app_lists');
     }
 }

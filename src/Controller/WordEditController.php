@@ -7,7 +7,6 @@ use App\Form\WordEditFormType;
 use App\Repository\WordRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -30,7 +29,7 @@ class WordEditController extends BaseController
     
         if (!isset($word)) {
             $this->addFlash('error', 'Вы не можете изменять это слово');
-            return new RedirectResponse($this->generateUrl('app_lists'));
+            return $this->redirectToRoute('app_lists');
         }
     
         $wordModel = new WordEditFormModel();
@@ -52,10 +51,9 @@ class WordEditController extends BaseController
             $entityManager->flush();
     
             $this->addFlash('success', 'Слово успешно изменено');
-            return new RedirectResponse($this->generateUrl('app_words_list', [
+            return $this->redirectToRoute('app_words_list', [
                 'id' => $word->getList()->getId(),
-                
-            ]));
+            ]);
         }
         
         return $this->render('word_edit/index.html.twig', [

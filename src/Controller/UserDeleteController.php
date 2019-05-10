@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -43,13 +42,13 @@ class UserDeleteController extends BaseController
         
         if (!isset($user)) {
             $this->addFlash('error', 'Пользователь не может быть удален');
-            return new RedirectResponse($this->generateUrl('app_admin'));
+            return $this->redirectToRoute('app_admin');
         }
         
         $this->entityManager->remove($user);
         $this->entityManager->flush();
         
         $this->addFlash('success', 'Пользователь ' . $user->getEmail() . ' успешно удален');
-        return new RedirectResponse($this->generateUrl('app_admin'));
+        return $this->redirectToRoute('app_admin');
     }
 }
