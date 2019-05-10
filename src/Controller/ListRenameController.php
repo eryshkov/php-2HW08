@@ -54,6 +54,7 @@ class ListRenameController extends BaseController
             'listCreateForm' => $form->createView(),
             'caption'        => 'Переименование списка ' . $list->getName(),
             'title'          => 'Renaming',
+            'button_text'    => 'Переименовать',
         ]);
     }
 }

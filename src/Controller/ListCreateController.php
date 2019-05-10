@@ -49,6 +49,7 @@ class ListCreateController extends BaseController
             'listCreateForm' => $form->createView(),
             'caption'        => 'Создание нового списка ',
             'title'          => 'New list',
+            'button_text'    => 'Создать',
         ]);
     }
 }
