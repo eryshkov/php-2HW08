@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Access;
 
+use App\Controller\BaseController;
 use App\Entity\User;
 use App\Form\SignUpFormType;
 use App\Form\DTO\UserRegistrationFormModel;

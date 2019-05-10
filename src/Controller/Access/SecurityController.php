@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Access;
 
+use App\Controller\BaseController;
 use App\Form\DTO\UserSignInFormModel;
 use App\Form\UserSignInFormType;
 use Symfony\Component\HttpFoundation\Response;
