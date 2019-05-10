@@ -52,6 +52,8 @@ class ListRenameController extends BaseController
         
         return $this->render('list_create_rename/index.html.twig', [
             'listCreateForm' => $form->createView(),
+            'caption'        => 'Переименование списка ' . $list->getName(),
+            'title'          => 'Renaming',
         ]);
     }
 }

@@ -47,6 +47,8 @@ class ListCreateController extends BaseController
         
         return $this->render('list_create_rename/index.html.twig', [
             'listCreateForm' => $form->createView(),
+            'caption'        => 'Создание нового списка ',
+            'title'          => 'New list',
         ]);
     }
 }

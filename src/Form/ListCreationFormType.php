@@ -14,7 +14,7 @@ class ListCreationFormType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'attr'     => [
-                    'placeholder' => 'название',
+                    'placeholder' => 'Название',
                 ],
                 'label'    => false,
                 'required' => true,
