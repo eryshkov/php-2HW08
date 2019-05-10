@@ -6,6 +6,7 @@ use App\Form\ListDetailsFormModel;
 use App\Form\ListDetailsFormType;
 use App\Repository\WordListRepository;
 use App\Repository\WordRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,9 +24,11 @@ class TrainingController extends BaseController
      * @param Request $request
      * @param WordRepository $wordRepository
      * @param WordListRepository $wordListRepository
+     * @param EntityManagerInterface $entityManager
      * @return RedirectResponse|Response
+     * @throws \Exception
      */
-    public function index(Request $request, WordRepository $wordRepository, WordListRepository $wordListRepository): Response
+    public function index(Request $request, WordRepository $wordRepository, WordListRepository $wordListRepository, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(ListDetailsFormType::class);
         $form->handleRequest($request);
@@ -58,6 +61,10 @@ class TrainingController extends BaseController
         if ($trainingSettings->isRandom) {
             shuffle($words);
         }
+    
+        $list->setLastAccessDate(new \DateTime());
+        $entityManager->persist($list);
+        $entityManager->flush();
         
         return $this->render('training/index.html.twig', [
             'words'            => $words,
