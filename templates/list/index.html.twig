@@ -26,7 +26,7 @@
                                href="{{ path('app_words_list', {'id': list.id}) }}">{{ list.words|length }}</a>
                             <span class="badge badge-info ml-3">{{ list.lastAccessDate|date('d.m.Y') }}</span>
                             <a
-                                    href="{{ path('app_list_delete', {'id': list.id}) }}"
+                                    href="{{ path('app_list_delete_confirm', {'id': list.id}) }}"
                                     class="badge badge-danger ml-3">X</a>
                         </li>
                     {% endfor %}

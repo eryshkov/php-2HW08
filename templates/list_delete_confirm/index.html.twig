@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirm{% endblock %}
+
+{% block body %}
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <div class="row">
+                <div class="col-auto">
+                    <h4>Подтвердите удаление списка {{ listForDeletion.name }}</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-auto">
+                    <a href="{{ path('app_list_delete', {'id': listForDeletion.id}) }}" class="btn btn-danger">Удалить
+                        безвозвратно</a>
+                </div>
+                <div class="col-auto">
+                    <a href="{{ path('app_list_details', {'id': listForDeletion.id}) }}" class="btn btn-outline-secondary">Отмена</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
