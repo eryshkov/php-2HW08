@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Word;
 
+use App\Controller\BaseController;
 use App\Form\DTO\WordEditFormModel;
 use App\Form\WordEditFormType;
 use App\Repository\WordRepository;
