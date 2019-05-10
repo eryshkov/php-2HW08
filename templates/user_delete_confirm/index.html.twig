@@ -7,16 +7,16 @@
         <div class="col-auto">
             <div class="row">
                 <div class="col-auto">
-                    <h4>Подтвердите удаление списка {{ listForDeletion.name }}</h4>
+                    <h4>Подтвердите удаление пользователя {{ userForDeletion.email }}</h4>
                 </div>
             </div>
             <div class="row">
                 <div class="col-auto">
-                    <a href="{{ path('app_list_delete', {'id': listForDeletion.id}) }}" class="btn btn-danger">Удалить
+                    <a href="{{ path('app_user_delete', {'id': userForDeletion.id}) }}" class="btn btn-danger">Удалить
                         безвозвратно</a>
                 </div>
                 <div class="col-auto">
-                    <a href="{{ path('app_list_details', {'id': listForDeletion.id}) }}"
+                    <a href="{{ path('app_admin') }}"
                        class="btn btn-outline-secondary">Отмена</a>
                 </div>
             </div>
