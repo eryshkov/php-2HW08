@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\ListOfWords;
 
+use App\Controller\BaseController;
 use App\Entity\WordList;
 use App\Form\DTO\ListCreationFormModel;
 use App\Form\ListCreationFormType;
