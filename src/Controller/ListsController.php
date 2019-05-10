@@ -8,10 +8,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class ListController
+ * Class ListsController
  * @IsGranted("ROLE_USER")
  */
-class ListController extends BaseController
+class ListsController extends BaseController
 {
     /**
      * @var WordListRepository
@@ -33,7 +33,7 @@ class ListController extends BaseController
         ]);
         
         return $this->render('list/index.html.twig', [
-            'wordList' => $wordList,
+            'wordLists' => $wordList,
         ]);
     }
 }

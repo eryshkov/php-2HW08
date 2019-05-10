@@ -15,17 +15,18 @@
     </div>
     <div class="row">
         <div class="col-auto">
-            {% if wordList is not empty %}
+            {% if wordLists is not empty %}
                 <ul class="list-group">
-                    {% for item in wordList %}
+                    {% for list in wordLists %}
                         <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-                            <a href="{{ path('app_list_details', {'id': item.id}) }}"
-                               class="btn-link">{{ item.name }}</a>
+                            <a href="{{ path('app_list_details', {'id': list.id}) }}"
+                               class="btn-link">{{ list.name }}</a>
+                            <a href="#" class="badge badge-info ml-3">✎</a>
                             <a class="badge badge-success ml-3"
-                               href="{{ path('app_words_list', {'id': item.id}) }}">{{ item.words|length }}</a>
-                            <span class="badge badge-info ml-3">{{ item.lastAccessDate|date('d.m.Y') }}</span>
+                               href="{{ path('app_words_list', {'id': list.id}) }}">{{ list.words|length }}</a>
+                            <span class="badge badge-info ml-3">{{ list.lastAccessDate|date('d.m.Y') }}</span>
                             <a
-                                    href="{{ path('app_list_delete', {'id': item.id}) }}"
+                                    href="{{ path('app_list_delete', {'id': list.id}) }}"
                                     class="badge badge-danger ml-3">X</a>
                         </li>
                     {% endfor %}
