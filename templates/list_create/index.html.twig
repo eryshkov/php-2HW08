@@ -13,6 +13,7 @@
             {{ form_start(listCreateForm) }}
             {{ form_row(listCreateForm.name) }}
             <button type="submit" class="btn btn-primary">Создать</button>
+            <a href="{{ path('app_lists') }}" class="btn btn-outline-secondary">Отмена</a>
             {{ form_end(listCreateForm) }}
         </div>
     </div>

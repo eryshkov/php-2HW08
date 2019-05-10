@@ -21,7 +21,7 @@
                         <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
                             <a href="{{ path('app_list_details', {'id': list.id}) }}"
                                class="btn-link">{{ list.name }}</a>
-                            <a href="#" class="badge badge-info ml-3">✎</a>
+                            <a href="{{ path('app_list_rename', {'id': list.id}) }}" class="badge badge-info ml-3">✎</a>
                             <a class="badge badge-success ml-3"
                                href="{{ path('app_words_list', {'id': list.id}) }}">{{ list.words|length }}</a>
                             <span class="badge badge-info ml-3">{{ list.lastAccessDate|date('d.m.Y') }}</span>
