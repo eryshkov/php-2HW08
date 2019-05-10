@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Form\ListDetailsFormModel;
+use App\Form\DTO\ListDetailsFormModel;
 use App\Form\ListDetailsFormType;
 use App\Repository\WordListRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;

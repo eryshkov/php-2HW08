@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\DTO;
 
 use App\Entity\WordList;
 use Symfony\Component\Validator\Constraints as Assert;

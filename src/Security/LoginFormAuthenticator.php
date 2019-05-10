@@ -3,7 +3,7 @@
 namespace App\Security;
 
 use App\Entity\User;
-use App\Form\UserSignInFormModel;
+use App\Form\DTO\UserSignInFormModel;
 use App\Form\UserSignInFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -48,7 +48,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var UserSignInFormModel $userModel */
+            /** @var \App\Form\DTO\UserSignInFormModel $userModel */
             $userModel = $form->getData();
             
             $request->getSession()->set(
@@ -64,7 +64,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        /** @var UserSignInFormModel $credentials */
+        /** @var \App\Form\DTO\UserSignInFormModel $credentials */
         $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials->email]);
         
         if (!isset($user)) {
@@ -77,7 +77,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     
     public function checkCredentials($credentials, UserInterface $user): bool
     {
-        /** @var UserSignInFormModel $credentials */
+        /** @var \App\Form\DTO\UserSignInFormModel $credentials */
         $isPasswordValid = $this->passwordEncoder->isPasswordValid($user, $credentials->plainPassword);
         
         if (!$isPasswordValid) {

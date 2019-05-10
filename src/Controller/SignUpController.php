@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\SignUpFormType;
-use App\Form\UserRegistrationFormModel;
+use App\Form\DTO\UserRegistrationFormModel;
 use App\Security\LoginFormAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,7 +32,7 @@ class SignUpController extends BaseController
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var UserRegistrationFormModel $userModel */
+            /** @var \App\Form\DTO\UserRegistrationFormModel $userModel */
             $userModel = $form->getData();
             $user = new User();
             $user->setEmail($userModel->email);

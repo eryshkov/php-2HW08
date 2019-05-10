@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Form\UserSignInFormModel;
+use App\Form\DTO\UserSignInFormModel;
 use App\Form\UserSignInFormType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

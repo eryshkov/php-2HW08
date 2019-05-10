@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Form\WordEditFormModel;
+use App\Form\DTO\WordEditFormModel;
 use App\Form\WordEditFormType;
 use App\Repository\WordRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -41,7 +41,7 @@ class WordEditController extends BaseController
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var WordEditFormModel $wordModelSubmitted */
+            /** @var \App\Form\DTO\WordEditFormModel $wordModelSubmitted */
             $wordModelSubmitted = $form->getData();
             $word->setEnglish($wordModelSubmitted->english);
             $word->setRussian($wordModelSubmitted->russian);

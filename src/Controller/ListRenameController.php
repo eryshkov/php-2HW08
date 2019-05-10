@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\WordList;
-use App\Form\ListCreationFormModel;
+use App\Form\DTO\ListCreationFormModel;
 use App\Form\ListCreationFormType;
 use App\Repository\WordListRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -39,7 +39,7 @@ class ListRenameController extends BaseController
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var ListCreationFormModel $listModel */
+            /** @var \App\Form\DTO\ListCreationFormModel $listModel */
             $listModel = $form->getData();
             $list->setName(ucfirst($listModel->name));
             

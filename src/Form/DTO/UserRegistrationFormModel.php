@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\DTO;
 
 use App\Validator\UniqueUser;
 use Symfony\Component\Validator\Constraints as Assert;

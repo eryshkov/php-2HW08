@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Form\DTO\ListDetailsFormModel;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;

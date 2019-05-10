@@ -6,7 +6,7 @@ use App\Repository\WordRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Word;
-use App\Form\WordFormModel;
+use App\Form\DTO\WordFormModel;
 use App\Form\WordFormType;
 use App\Repository\WordListRepository;
 use Doctrine\ORM\EntityManagerInterface;

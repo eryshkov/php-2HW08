@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\WordList;
-use App\Form\ListCreationFormModel;
+use App\Form\DTO\ListCreationFormModel;
 use App\Form\ListCreationFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
