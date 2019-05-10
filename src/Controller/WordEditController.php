@@ -26,12 +26,12 @@ class WordEditController extends BaseController
             'id'   => $id,
             'user' => $this->getUser(),
         ]);
-    
+        
         if (!isset($word)) {
             $this->addFlash('error', 'Вы не можете изменять это слово');
             return $this->redirectToRoute('app_lists');
         }
-    
+        
         $wordModel = new WordEditFormModel();
         $wordModel->english = $word->getEnglish();
         $wordModel->russian = $word->getRussian();
@@ -39,7 +39,7 @@ class WordEditController extends BaseController
         
         $form = $this->createForm(WordEditFormType::class, $wordModel);
         $form->handleRequest($request);
-    
+        
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var WordEditFormModel $wordModelSubmitted */
             $wordModelSubmitted = $form->getData();
@@ -49,13 +49,13 @@ class WordEditController extends BaseController
             if ($wordModelSubmitted->list->isGrantedFor($this->getUser())) {
                 $word->setList($wordModelSubmitted->list);
             } else {
-                $this->addFlash('error', 'Вы не можете поместить слово в список '. $wordModelSubmitted->list->getName());
+                $this->addFlash('error', 'Вы не можете поместить слово в список ' . $wordModelSubmitted->list->getName());
                 return $this->redirectToRoute('app_lists');
             }
-    
+            
             $entityManager->persist($word);
             $entityManager->flush();
-    
+            
             $this->addFlash('success', 'Слово успешно изменено');
             return $this->redirectToRoute('app_words_list', [
                 'id' => $word->getList()->getId(),
@@ -64,7 +64,7 @@ class WordEditController extends BaseController
         
         return $this->render('word_edit/index.html.twig', [
             'editForm' => $form->createView(),
-            'list' => $word->getList(),
+            'list'     => $word->getList(),
         ]);
     }
 }

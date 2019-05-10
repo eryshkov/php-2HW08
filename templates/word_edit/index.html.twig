@@ -3,15 +3,15 @@
 {% block title %}Word Edit{% endblock %}
 
 {% block body %}
-<div class="row justify-content-center">
-    <div class="col-auto">
-        {{ form_start(editForm) }}
-        {{ form_row(editForm.english) }}
-        {{ form_row(editForm.russian) }}
-        {{ form_row(editForm.list) }}
-        <button type="submit" class="btn btn-primary">OK</button>
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            {{ form_start(editForm) }}
+            {{ form_row(editForm.english) }}
+            {{ form_row(editForm.russian) }}
+            {{ form_row(editForm.list) }}
+            <button type="submit" class="btn btn-primary">OK</button>
             <a href="{{ path('app_words_list', {'id': list.id}) }}" class="btn btn-secondary">Отмена</a>
-        {{ form_end(editForm) }}
+            {{ form_end(editForm) }}
+        </div>
     </div>
-</div>
 {% endblock %}

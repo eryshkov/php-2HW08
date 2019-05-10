@@ -5,10 +5,12 @@
 {% block body %}
     <div class="row mt-3">
         <div class="col-auto">
-            <a href="{{ path('app_list_delete', {'id': list.id}) }}" class="btn btn-outline-danger">Удалить весь список</a>
+            <a href="{{ path('app_list_delete', {'id': list.id}) }}" class="btn btn-outline-danger">Удалить весь
+                список</a>
         </div>
         <div class="col-auto">
-            <a href="{{ path('app_list_details', {'id': list.id}) }}" class="btn btn-outline-secondary">Информация о списке</a>
+            <a href="{{ path('app_list_details', {'id': list.id}) }}" class="btn btn-outline-secondary">Информация о
+                списке</a>
         </div>
     </div>
     <div class="row mt-3">
@@ -30,7 +32,8 @@
                         <th scope="row" class="align-middle text-left">{{ num }}</th>
                         <td class="align-middle text-left"><a href="{{ path('app_word_delete', {'id': word.id}) }}"
                                                               class="badge badge-danger badge-pill">X</a></td>
-                        <td class="align-middle text-left"><a href="{{ path('app_word_edit', {'id': word.id}) }}" class="badge badge-success badge-pill ml-2">✎</a>
+                        <td class="align-middle text-left"><a href="{{ path('app_word_edit', {'id': word.id}) }}"
+                                                              class="badge badge-success badge-pill ml-2">✎</a>
                         </td>
                         <td class="align-middle text-left">{{ word.english }}</td>
                         <td class="align-middle text-left">{{ word.russian }}</td>

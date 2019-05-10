@@ -47,8 +47,8 @@ class WordEditFormType extends AbstractType
                 'required' => true,
             ])
             ->add('list', EntityType::class, [
-                'class'        => WordList::class,
-                'label'        => 'Список',
+                'class'   => WordList::class,
+                'label'   => 'Список',
                 'choices' => $currentUser->getWordLists(),
             ]);
     }

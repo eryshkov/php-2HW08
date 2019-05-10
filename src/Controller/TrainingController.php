@@ -61,7 +61,7 @@ class TrainingController extends BaseController
         if ($trainingSettings->isRandom) {
             shuffle($words);
         }
-    
+        
         $list->setLastAccessDate(new \DateTime());
         $entityManager->persist($list);
         $entityManager->flush();

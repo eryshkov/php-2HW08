@@ -27,20 +27,20 @@
         </div>
     </div>
     {% if list.words|length > 0 %}
-    <div class="row justify-content-start mt-4">
-        <div class="col-auto">
-            <div class="card">
-                <h5 class="card-header">Тренировка</h5>
-                <div class="card-body">
-                    <h5 class="card-title">Условия</h5>
-                    {{ form_start(listDetailsForm) }}
-                    {{ form_row(listDetailsForm.isShowTranslation) }}
-                    {{ form_row(listDetailsForm.isRandom) }}
-                    <button type="submit" class="btn btn-primary">Начать</button>
-                    {{ form_end(listDetailsForm) }}
+        <div class="row justify-content-start mt-4">
+            <div class="col-auto">
+                <div class="card">
+                    <h5 class="card-header">Тренировка</h5>
+                    <div class="card-body">
+                        <h5 class="card-title">Условия</h5>
+                        {{ form_start(listDetailsForm) }}
+                        {{ form_row(listDetailsForm.isShowTranslation) }}
+                        {{ form_row(listDetailsForm.isRandom) }}
+                        <button type="submit" class="btn btn-primary">Начать</button>
+                        {{ form_end(listDetailsForm) }}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     {% endif %}
 {% endblock %}
