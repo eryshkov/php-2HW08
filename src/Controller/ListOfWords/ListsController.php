@@ -32,7 +32,7 @@ class ListsController extends BaseController
         $wordList = $this->wordListRepository->findBy([
             'user' => $this->getUser(),
         ], [
-            'id' => 'DESC',
+            'lastAccessDate' => 'DESC',
         ]);
         
         return $this->render('list/index.html.twig', [
