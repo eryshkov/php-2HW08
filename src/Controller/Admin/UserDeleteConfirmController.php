@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class UserDeleteConfirmController
- * @IsGranted("ROLE_ADMIN")
+ * @IsGranted("ROLE_ADMIN_USER_DELETE")
  */
 class UserDeleteConfirmController extends BaseController
 {

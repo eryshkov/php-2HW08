@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class UserDeleteController
- * @IsGranted("ROLE_ADMIN")
+ * @IsGranted("ROLE_ADMIN_USER_DELETE")
  */
 class UserDeleteController extends BaseController
 {
