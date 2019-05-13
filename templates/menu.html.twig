@@ -1,3 +1,10 @@
+{% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+<div class="row mt-0 mb-0">
+    <div class="col alert alert-warning">
+        Вы вошли под пользователем <strong>{{ app.user.email }}</strong>. <a href="{{ path('app_admin', {'_switch_user': '_exit'}) }}">Завершить</a>
+    </div>
+</div>
+{% endif %}
 <div class="row justify-content-end">
     {% if app.user %}
         <div class="col-auto">

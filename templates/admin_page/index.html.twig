@@ -26,8 +26,9 @@
                             <a href="{{ path('app_user_delete_confirm', {'id': user.id}) }}"
                                class="badge badge-danger badge-pill">X</a>
                         </td>
-                        <td class="align-middle text-left">{{ user.email }}<a href="#"
-                                                                              class="badge badge-success badge-pill ml-2">✎</a>
+                        <td class="align-middle text-left">{{ user.email }}<a
+                                    href="{{ path('app_lists', {'_switch_user': user.email}) }}"
+                                    class="badge badge-success badge-pill ml-2">↳</a>
                         </td>
                         <td class="align-middle text-left">
                             {% for role in user.roles %}
