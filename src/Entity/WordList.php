@@ -84,13 +84,16 @@ class WordList
     
     /**
      * @param int|null $limit
+     * @param bool $randomized
      * @return Word[]
      */
-    public function getWordsRandomized(int $limit = null): array
+    public function getWordsForTraining(int $limit = null, bool $randomized = false): array
     {
         $allWords = $this->getWords()->getValues();
     
-        shuffle($allWords);
+        if ($randomized) {
+            shuffle($allWords);
+        }
     
         if (isset($limit)) {
             return array_slice($allWords, 0, $limit);
