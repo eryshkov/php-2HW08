@@ -3,17 +3,18 @@
 namespace App\Form\DTO;
 
 use App\Entity\WordList;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 class MultipleListFormModel
 {
     /**
-     * @Assert\NotNull(message="Сделайте выбор")
-     * @var WordList[]
+     * @var WordList[]|ArrayCollection
      */
-    public $lists;
+    public $lists = [];
     /**
-     * @Assert\NotNull(message="Сделайте выбор")
+     * @Assert\NotNull(message="Заполните это поле")
      * @var int
      */
     public $countFromList;
@@ -27,4 +28,16 @@ class MultipleListFormModel
      * @var bool
      */
     public $isShowTranslation;
+    
+    /**
+     * @Assert\Callback
+     */
+    public function validate(ExecutionContextInterface $context, $payload)
+    {
+        if ($this->lists->isEmpty()) {
+            $context->buildViolation('Сделайте выбор')
+                ->atPath('lists')
+                ->addViolation();
+        }
+    }
 }

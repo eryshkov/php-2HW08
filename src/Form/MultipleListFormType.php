@@ -35,7 +35,6 @@ class MultipleListFormType extends AbstractType
                 'class'    => WordList::class,
                 'multiple' => true,
                 'expanded' => true,
-                'required' => true,
                 'label'    => 'Доступные списки:',
                 'choices'  => $currentUser->getWordLists(),
             ])
