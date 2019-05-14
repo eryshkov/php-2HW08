@@ -10,7 +10,13 @@
 {% block body %}
     <div class="row mt-1">
         <div class="col-auto mb-3 align-self-start">
-            <a class="btn btn-outline-dark" href="{{ path('app_list_details', {'id': list.id}) }}">⤴</a>
+            <a class="btn btn-outline-dark" href="
+            {% if list is defined %}
+                {{ path('app_list_details', {'id': list.id}) }}
+            {% else %}
+                {{ path('app_lists') }}
+            {% endif %}
+            ">⤴</a>
         </div>
     </div>
     <div class="row mt-1 justify-content-center">

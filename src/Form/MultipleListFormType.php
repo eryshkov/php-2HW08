@@ -7,6 +7,7 @@ use App\Entity\WordList;
 use App\Form\DTO\MultipleListFormModel;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Security;
@@ -36,6 +37,20 @@ class MultipleListFormType extends AbstractType
                 'required' => true,
                 'label' => 'Доступные списки:',
                 'choices' => $currentUser->getWordLists(),
+            ])
+            ->add('isShowTranslation', ChoiceType::class, [
+                'choices' => [
+                    'Оригинал' => false,
+                    'Перевод'  => true,
+                ],
+                'label'   => 'Что показывать?',
+            ])
+            ->add('isRandom', ChoiceType::class, [
+                'choices' => [
+                    'Да'  => true,
+                    'Нет' => false,
+                ],
+                'label'   => 'Показывать в случайном порядке?',
             ])
         ;
     }

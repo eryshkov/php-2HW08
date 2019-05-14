@@ -82,6 +82,23 @@ class WordList
         return $this->words;
     }
     
+    /**
+     * @param int|null $limit
+     * @return Word[]
+     */
+    public function getWordsRandomized(int $limit = null): array
+    {
+        $allWords = $this->getWords()->getValues();
+    
+        shuffle($allWords);
+    
+        if (isset($limit)) {
+            return array_slice($allWords, 0, $limit);
+        } else {
+            return $allWords;
+        }
+    }
+    
     public function addWord(Word $word): self
     {
         if (!$this->words->contains($word)) {

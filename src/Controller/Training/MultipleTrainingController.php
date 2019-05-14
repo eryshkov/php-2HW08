@@ -23,14 +23,29 @@ class MultipleTrainingController extends BaseController
         $form = $this->createForm(MultipleListFormType::class);
         $form->handleRequest($request);
     
-        if ($form->isSubmitted() && $form->isValid()) {
-            /** @var MultipleListFormModel $selectedLists */
-            $selectedLists = $form->getData();
-            dd($selectedLists);
+        if (!($form->isSubmitted() && $form->isValid())) {
+            return $this->render('multiple_training/index.html.twig', [
+                'listsForm' => $form->createView(),
+            ]);
         }
+    
+        /** @var MultipleListFormModel $trainingSettings */
+        $trainingSettings = $form->getData();
+        $selectedLists = $trainingSettings->lists;
         
-        return $this->render('multiple_training/index.html.twig', [
-            'listsForm' => $form->createView(),
+        $words = [];
+        foreach ($selectedLists as $list) {
+            /** @noinspection SlowArrayOperationsInLoopInspection */
+            $words = array_merge($words, $list->getWordsRandomized());
+        }
+    
+        if ($trainingSettings->isRandom) {
+            shuffle($words);
+        }
+    
+        return $this->render('training/index.html.twig', [
+            'words' => $words,
+            'trainingSettings' => $trainingSettings,
         ]);
     }
 }

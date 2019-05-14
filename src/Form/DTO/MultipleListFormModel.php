@@ -12,4 +12,14 @@ class MultipleListFormModel
      * @var WordList[]
      */
     public $lists;
+    /**
+     * @Assert\NotNull(message="Сделайте выбор")
+     * @var bool
+     */
+    public $isRandom;
+    /**
+     * @Assert\NotNull(message="Сделайте выбор")
+     * @var bool
+     */
+    public $isShowTranslation;
 }
