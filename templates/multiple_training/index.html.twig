@@ -5,16 +5,17 @@
 {% block body %}
     <div class="row justify-content-center mt-2">
         <div class="col-auto">
-            <h3>Выберите списки, из которых будут использованы слова</h3>
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-auto">
-            {{ form_start(listsForm) }}
-            {{ form_widget(listsForm) }}
-            <button type="submit" class="btn btn-primary">OK</button>
-            <a href="{{ path('app_lists') }}" class="btn btn-secondary">Отмена</a>
-            {{ form_end(listsForm) }}
+            <div class="card">
+                <h5 class="card-header">Умная тренировка</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Условия:</h5>
+                    {{ form_start(listsForm) }}
+                    {{ form_widget(listsForm) }}
+                    <button type="submit" class="btn btn-primary">OK</button>
+                    <a href="{{ path('app_lists') }}" class="btn btn-secondary">Отмена</a>
+                    {{ form_end(listsForm) }}
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
