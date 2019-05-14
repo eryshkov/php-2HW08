@@ -36,7 +36,7 @@ class MultipleTrainingController extends BaseController
         $words = [];
         foreach ($selectedLists as $list) {
             /** @noinspection SlowArrayOperationsInLoopInspection */
-            $words = array_merge($words, $list->getWordsRandomized());
+            $words = array_merge($words, $list->getWordsRandomized($trainingSettings->countFromList));
         }
     
         if ($trainingSettings->isRandom) {

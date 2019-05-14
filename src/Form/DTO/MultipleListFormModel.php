@@ -14,6 +14,11 @@ class MultipleListFormModel
     public $lists;
     /**
      * @Assert\NotNull(message="Сделайте выбор")
+     * @var int
+     */
+    public $countFromList;
+    /**
+     * @Assert\NotNull(message="Сделайте выбор")
      * @var bool
      */
     public $isRandom;
