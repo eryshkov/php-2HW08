@@ -46,6 +46,11 @@ class MultipleTrainingController extends BaseController
             $list->setLastAccessDate(new \DateTime());
             $entityManager->persist($list);
         }
+    
+        if (!isset($words) || count($words) < 1) {
+            $this->addFlash('error', 'Вы не выбрали ни одного слова для тренировки');
+            return $this->redirectToRoute('app_lists');
+        }
         
         $entityManager->flush();
     
@@ -56,6 +61,7 @@ class MultipleTrainingController extends BaseController
         return $this->render('training/index.html.twig', [
             'words' => $words,
             'trainingSettings' => $trainingSettings,
+            'caption' => 'Умная тренировка',
         ]);
     }
 }

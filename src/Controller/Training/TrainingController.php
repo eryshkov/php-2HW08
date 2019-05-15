@@ -71,6 +71,7 @@ class TrainingController extends BaseController
             'words'            => $words,
             'list'             => $list,
             'trainingSettings' => $trainingSettings,
+            'caption' => 'Простая тренировка',
         ]);
     }
 }
