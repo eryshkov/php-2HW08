@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Word;
 use App\Entity\WordList;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\Criteria;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -85,6 +86,14 @@ class WordRepository extends ServiceEntityRepository
     {
         return $this->getAllFromListBy('id', 'DESC', $list);
     }
+    
+//    public function getWordsCountAt(WordList $list): int
+//    {
+//        $criteria = Criteria::create()
+//            ->andWhere(Criteria::expr()->eq('', $list))
+//        ;
+//        return $this->count($criteria);
+//    }
     
     // /**
     //  * @return Word[] Returns an array of Word objects

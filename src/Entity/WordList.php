@@ -144,6 +144,6 @@ class WordList
     
     public function __toString()
     {
-        return $this->name;
+        return $this->name . sprintf(', слов: %d, дата: %s', count($this->words), $this->getLastAccessDate()->format('d.m.Y'));
     }
 }
