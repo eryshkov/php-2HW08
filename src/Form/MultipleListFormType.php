@@ -42,7 +42,7 @@ class MultipleListFormType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 'label'    => 'Доступные списки:',
-                'choices'  => $this->listRepository->getListsByTrainingDate($currentUser, false),
+                'choices'  => $this->listRepository->getListsByTrainingDate($currentUser),
             ])
             ->add('countFromList', TextType::class, [
                 'attr'     => [

@@ -29,11 +29,7 @@ class ListsController extends BaseController
      */
     public function index(): Response
     {
-        $wordList = $this->wordListRepository->findBy([
-            'user' => $this->getUser(),
-        ], [
-            'lastAccessDate' => 'DESC',
-        ]);
+        $wordList = $this->wordListRepository->getListsByTrainingDate($this->getUser());
         
         return $this->render('list/index.html.twig', [
             'wordLists' => $wordList,
