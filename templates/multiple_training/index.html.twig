@@ -9,7 +9,7 @@
                class="form-check-input" value="{{ value }}">
         <label class="form-check-label" for="{{ id }}">{{ label }}</label>
         <a class="badge badge-success ml-3"
-           href="{{ path('app_words_list', {'id': id}) }}">{{ form.parent.vars.choices[value].data.words|length }}</a>
+           href="{{ path('app_words_list', {'id': value}) }}">{{ form.parent.vars.choices[value].data.words|length }}</a>
         <span class="badge badge-info ml-3">{{ form.parent.vars.choices[value].data.lastAccessDate|date('d.m.Y') }}</span>
     </div>
 {% endblock %}
