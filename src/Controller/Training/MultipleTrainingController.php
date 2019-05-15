@@ -5,8 +5,10 @@ namespace App\Controller\Training;
 use App\Controller\BaseController;
 use App\Form\DTO\MultipleListFormModel;
 use App\Form\MultipleListFormType;
+use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -17,8 +19,12 @@ class MultipleTrainingController extends BaseController
 {
     /**
      * @Route("/multiple/training", name="app_multiple_training")
+     * @param Request $request
+     * @param EntityManagerInterface $entityManager
+     * @return Response
+     * @throws \Exception
      */
-    public function index(Request $request)
+    public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(MultipleListFormType::class);
         $form->handleRequest($request);
@@ -37,7 +43,11 @@ class MultipleTrainingController extends BaseController
         foreach ($selectedLists as $list) {
             /** @noinspection SlowArrayOperationsInLoopInspection */
             $words = array_merge($words, $list->getWordsForTraining($trainingSettings->countFromList, $trainingSettings->isRandom));
+            $list->setLastAccessDate(new \DateTime());
+            $entityManager->persist($list);
         }
+        
+        $entityManager->flush();
     
         if ($trainingSettings->isRandom) {
             shuffle($words);
