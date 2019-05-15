@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\User;
 use App\Entity\WordList;
 use App\Form\DTO\MultipleListFormModel;
+use App\Repository\WordListRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -19,10 +20,15 @@ class MultipleListFormType extends AbstractType
      * @var Security
      */
     private $security;
+    /**
+     * @var WordListRepository
+     */
+    private $listRepository;
     
-    public function __construct(Security $security)
+    public function __construct(Security $security, WordListRepository $listRepository)
     {
         $this->security = $security;
+        $this->listRepository = $listRepository;
     }
     
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -36,7 +42,7 @@ class MultipleListFormType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 'label'    => 'Доступные списки:',
-                'choices'  => $currentUser->getWordLists(),
+                'choices'  => $this->listRepository->getListsByTrainingDate($currentUser, false),
             ])
             ->add('countFromList', TextType::class, [
                 'attr'     => [

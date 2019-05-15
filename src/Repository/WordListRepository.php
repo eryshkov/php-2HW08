@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\User;
 use App\Entity\WordList;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -17,6 +18,32 @@ class WordListRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, WordList::class);
+    }
+    
+    /**
+     * @param User $user
+     * @param string $orderBy
+     * @param bool $asc
+     * @return WordList[]
+     */
+    protected function getListsBy(User $user, string $orderBy, bool $asc = false): array
+    {
+        return $this->createQueryBuilder('wl')
+            ->andWhere('wl.user = :user')
+            ->setParameter('user', $user)
+            ->orderBy('wl.' . $orderBy, $asc ? 'ASC' : 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+    
+    /**
+     * @param User $user
+     * @param bool $ascending
+     * @return WordList[]
+     */
+    public function getListsByTrainingDate(User $user, bool $ascending = false): array
+    {
+        return $this->getListsBy($user, 'lastAccessDate', $ascending);
     }
     
     // /**
